@@ -11,7 +11,10 @@
 
     <link rel="stylesheet" href="{{rootURL}}assets/vendor.css">
     <link rel="stylesheet" href="{{rootURL}}assets/foodzy.css">
-
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bubbler+One|Sacramento" rel="stylesheet">
     {{content-for "head-footer"}}
   </head>
   <body>
@@ -19,6 +22,25 @@
 
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/foodzy.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAZc7veRbfpT2G7YK5a-QG4cXn6Ty4JAxY",
+        authDomain: "foodzy-4542c.firebaseapp.com",
+        databaseURL: "https://foodzy-4542c.firebaseio.com",
+        projectId: "foodzy-4542c",
+        storageBucket: "foodzy-4542c.appspot.com",
+        messagingSenderId: "327674536119"
+      };
+      firebase.initializeApp(config);
+    </script>
+
 
     {{content-for "body-footer"}}
   </body>

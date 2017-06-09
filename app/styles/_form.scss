@@ -1,0 +1,35 @@
+
+.form {
+  margin-bottom: 30px;
+  padding: 10px 0px;
+
+  .add  {
+    text-align: right;
+
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      line-height: 0;
+
+      &:focus {
+          outline: none;
+          background-color: none;
+      }
+
+      &:active {
+          color: #ec407a;
+      }
+    }
+  }
+}
+
+
+
+
+.question {
+  border: 1px solid #dcdada;
+  border-radius: 6px;
+  padding: 20px;
+
+}
