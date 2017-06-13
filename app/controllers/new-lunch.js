@@ -29,16 +29,16 @@ export default Ember.Controller.extend({
 
     addAccomp: function () {
       var accomps = this.menu.accomps;
-      var id = this.menu.accomps.length - 1;
-      accomps.push({name: "", id: id})
+      var id = this.menu.accomps.length;
+      accomps.push({name: "", id: "accomp"+id})
       Ember.set(this.menu, "accomps", accomps);
       this.notifyPropertyChange('menu');
     },
 
     addAddition: function () {
       var addit = this.menu.additions;
-      var id = this.menu.additions.length - 1;
-      addit.push({name: "", id: id})
+      var id = this.menu.additions.length;
+      addit.push({name: "", id:  "addition"+id})
       Ember.set(this.menu, "additions", addit);
       this.notifyPropertyChange('menu');
     },

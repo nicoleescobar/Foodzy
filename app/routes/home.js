@@ -30,6 +30,7 @@ export default Ember.Route.extend({
     var database = firebase.database();
     var menu = database.ref('menu/menu').once('value').then(function(snapshot) {
       controller.set("menu", snapshot.val());
+      controller.setupMenu();
     });
   },
 });
