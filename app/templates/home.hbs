@@ -25,7 +25,7 @@
       <div class="question">
         {{#each menu.proteins as |protein|}}
           <p>
-            <input  type="radio" name="protein" id={{protein.id}} value={{order.protein}} />
+            <input  type="radio" name="protein" id={{protein.id}} onchange={{action "selectProtein" protein.name}} />
             <label for={{protein.id}}>{{protein.name}}</label>
           </p>
         {{/each}}
@@ -41,9 +41,9 @@
 
     <div class="input-field">
       <div class="question">
-        {{#each menu.accomps as |accomp|}}
+        {{#each menu.accomps as |accomp index|}}
           <p>
-            <input type="checkbox" id={{accomp.id}} value={{accomp.name}}/>
+            <input type="checkbox" id={{accomp.id}} onchange={{action "selectAccomp" accomp index}}/>
             <label for={{accomp.id}}>{{accomp.name}}</label>
           </p>
         {{/each}}
@@ -59,9 +59,9 @@
 
     <div class="input-field">
       <div class="question">
-        {{#each menu.additions as |addition|}}
+        {{#each menu.additions as |addition index|}}
           <p>
-            <input type="checkbox" id={{addition.id}} value={{addition.name}}/>
+            <input type="radio" id={{addition.id}} value={{addition.name}} onchange={{action "selectAddition" addition.name}}/>
             <label for={{addition.id}}>{{addition.name}}</label>
           </p>
         {{/each}}
@@ -70,12 +70,48 @@
   </div>
 </form>
 
+<form class="row">
+  {{#if showSoup}}
+    <div class="col s12 m4 form">
+      <div class="col s12 icon">
+        <img src="/assets/images/icons/png/soup.png" alt="">
+        <h5> Sopa de {{menu.soup}}</h5>
+      </div>
 
+      <div class="switch">
+        <label>
+          No
+          <input id="soupCheck" type="checkbox">
+          <span class="lever"></span>
+          Si
+        </label>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if showDrink}}
+    <div class="col s12 m4 form">
+      <div class="col s12 icon">
+        <img src="/assets/images/icons/png/soda.png" alt="">
+        <h5> {{menu.drink}} </h5>
+      </div>
+      <div class="switch" >
+        <label>
+          No
+          <input id="drinkCheck" type="checkbox">
+          <span class="lever"></span>
+          Si
+        </label>
+      </div>
+    </div>
+  {{/if}}
+</form>
 
 <div class="divider"></div>
-<button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveMenu"}}> Enviar
+<button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveOrder"}}> Enviar
     <i class="material-icons right">send</i>
 </button>
+
 
 <div class="menu-btn">
   <div class="fixed-action-btn horizontal click-to-toggle">

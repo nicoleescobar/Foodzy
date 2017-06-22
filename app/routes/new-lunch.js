@@ -2,9 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function () {
-    var user = firebase.auth().currentUser;
-    console.log(user);
-    if (user) {
+    if (firebase.auth().currentUser) {
       this.transitionTo("new-lunch");
     } else {
       this.transitionTo("login");
@@ -21,6 +19,18 @@ export default Ember.Route.extend({
       database.ref('menu').set({
         menu : controller.menu
       });
+      this.showSaved();
     }
+  },
+
+  showSaved: function () {
+    var that = this;
+    var controller = this.controllerFor("new-lunch");
+
+    controller.set("isSaved", true);
+    setTimeout(function() {
+      that.set("controller", false);
+      this.transitionTo("home");
+    }, 3000)
   }
 });
