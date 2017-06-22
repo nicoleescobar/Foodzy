@@ -25,11 +25,12 @@
 }
 
 
-
-
 .question {
   border: 1px solid #dcdada;
   border-radius: 6px;
   padding: 20px;
+
+  [type="checkbox"]+label ,
+  [type="radio"]+label{top:0}
 
 }
