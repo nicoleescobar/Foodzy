@@ -1,0 +1,31 @@
+.feedback{
+  .phrase{
+    font-size: 40px;
+    display: inline-block;
+    color: #ec407a;
+    margin-bottom: 0px;
+  }
+  p {
+    font-size: 20px;
+  }
+
+  > div > img{
+    width: 100%;
+  }
+  a.feedback-link{
+    float: none;
+    margin-top: 10px;
+    display: inline-block;
+    text-decoration: none;
+    color: #29b6f6;
+    margin-top: 10px;
+  }
+
+  a img {
+    width: 30px;
+    margin-top: 6px;
+    margin-left: 3px;
+  }
+
+  a{ float: right;}
+}

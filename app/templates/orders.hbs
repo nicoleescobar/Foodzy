@@ -1,0 +1,49 @@
+<div class="orders-container">
+
+<h3> Peticiones </h3>
+<table class="bordered highlight striped highlight responsive-table orders">
+  <thead>
+    <tr>
+        <th> <strong>  Fecha      </strong>     </th>
+        <th> <strong>  Nombre      </strong>     </th>
+        <th> <strong>  Proteina      </strong>     </th>
+        <th> <strong>  Acompañamientos     </strong>     </th>
+        <th> <strong>  Adicionales      </strong>     </th>
+        <th> <strong>  Sopa        </strong>     </th>
+        <th> <strong>  Bebida        </strong>     </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each orders as |order|}}
+    <tr>
+      <td> {{order.date}} </td>
+      <td> {{order.user.displayName}} </td>
+      <td> {{order.order.protein}}</td>
+      <td>
+        <ul>
+          {{#each order.order.accomps as |accomps|}}
+            <li> {{accomps}} </li>
+          {{/each}}
+        </ul>
+      </td>
+      <td> {{order.order.addition}} </td>
+      <td>
+        {{#if order.order.soup}}
+          <i class="material-icons" style="color:#00bfa5">done</i>
+          {{else}}
+          <i class="material-icons" style="color:#b71c1c">clear</i>
+        {{/if}}
+      </td>
+      <td>
+        {{#if order.order.drink}}
+          <i class="material-icons" style="color:#00bfa5">done</i>
+          {{else}}
+          <i class="material-icons" style="color:#b71c1c">clear</i>
+        {{/if}}
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+</div>

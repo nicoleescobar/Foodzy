@@ -4,6 +4,10 @@ html body {
   padding-bottom: 20px;
 }
 
+strong {
+  font-family: sans-serif;
+  font-weight: 300 !important;
+}
  .divider.header {
    height: 15px !important;
    margin-bottom: 20px;
@@ -82,4 +86,50 @@ form .form .descp-input input{
   text-align: center;
   border-radius: 20px;
   box-shadow: 3px 3px 11px #3a3a3a;
+}
+
+.modal-component {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+
+  .loading-container {
+    background-color: white;
+    height: 220px;
+    width: 500px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    p {
+      text-align: center;
+      color: #ec407a;
+      font-size: 30px;
+      margin: 10px;
+      text-transform: capitalize;
+    }
+
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      padding: 10px 0;
+    }
+  }
 }

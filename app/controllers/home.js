@@ -12,17 +12,22 @@ export default Ember.Controller.extend({
   },
   showSoup: false,
   showDrink: false,
+  showLoadingGreet: false,
+  showAdminSettings: false,
+  hideMenu: true,
+  ordersFilled: null,
 
   actions: {
     saveOrder: function () {
-      Ember.set(this.order, "drink", Ember.$("#drinkCheck").prop( "checked" ));
-      Ember.set(this.order, "soup", Ember.$("#soupCheck").prop( "checked" ));
-      console.log("order", this.order, this.user);
-      this.openUsers();
+      var soupChecbox = Ember.$("#soupCheck").prop( "checked" );
+      var drinkCheckbox = Ember.$("#drinkCheck").prop( "checked" );
+      Ember.set(this.order, "drink", Ember.isPresent(drinkCheckbox) ? drinkCheckbox : false);
+      Ember.set(this.order, "soup", Ember.isPresent(soupChecbox) ? soupChecbox : false);
+      this.deliverOrder();
     },
 
     selectProtein: function(protein) {
-      Ember.set(this.order, "protein", protein)
+      Ember.set(this.order, "protein", protein);
     },
 
     selectAccomp: function(accomp, index) {
@@ -37,7 +42,7 @@ export default Ember.Controller.extend({
     },
 
     selectAddition: function(addition) {
-      Ember.set(this.order, "addition", addition)
+      Ember.set(this.order, "addition", addition);
     }
   },
 
@@ -56,7 +61,24 @@ export default Ember.Controller.extend({
     }
   },
 
-  openUsers: function () {
+  deliverOrder: function () {
+    this.set('showLoadingGreet', true);
+    var order = {
+      user: this.user,
+      order: this.order,
+      date: new Date().toString(),
+    };
+    firebase.database().ref('orders').push(order);
+  },
 
+  cleanController: function () {
+    this.set('user', null);
+    this.set('menu', []);
+    this.set('showSoup', false);
+    this.set('showDrink', false);
+    this.set('showLoadingGreet', false);
+    this.set('showAdminSettings', false);
+    this.set('hideMenu', true);
+    this.set('ordersFilled', null);
   }
 });
