@@ -1,5 +1,7 @@
 table.orders{
   font-size: 16px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0px 1px 3px rgba(144, 143, 143, 0.57);
 
   ul {
     margin: 0;
@@ -12,4 +14,15 @@ table.orders{
 
 .orders-container {
   padding: 20px;
+
+  img, h3{
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0;
+  }
+
+  img{
+    width: 50px;
+    margin-top: -5px;
+  }
 }

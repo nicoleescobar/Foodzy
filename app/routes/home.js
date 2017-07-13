@@ -4,6 +4,14 @@ export default Ember.Route.extend({
   model: function () {
     this.checkUser();
     this.getOrders();
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+    .then(function() {
+      console.log('Notification permission granted.');
+    })
+    .catch(function(err) {
+      console.log('Unable to get permission to notify.', err);
+    });
   },
 
   cleanController: function () {
