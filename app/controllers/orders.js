@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   orders: null,
+  notOrdersYet: true,
   setupOrders : function functionName() {
     var orders=[];
     for (var key in this.orders) {
@@ -10,7 +11,11 @@ export default Ember.Controller.extend({
       var formatedDate = orderDate.getUTCDate() + '/' +  orderDate.getUTCMonth();
       orders.push({user: order.user, date: formatedDate, order: order.order});
     }
-    console.log(orders);
     this.set('orders', orders);
+    if (orders.length === 0) {
+      this.set('notOrdersYet', true);
+    } else {
+      this.set('notOrdersYet', false);
+    }
   }
 });

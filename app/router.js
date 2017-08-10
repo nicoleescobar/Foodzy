@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('new-lunch',{path: '/new'});
   this.route('feedback', {path: '/feedback'});
   this.route('orders', {path: '/orders'});
+  this.route('notify', {path: '/notify'});
 });
 
 export default Router;

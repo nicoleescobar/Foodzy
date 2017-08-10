@@ -1,28 +1,103 @@
-.menu-header {
-  .card {
-    height: 200px;
+.header {
+  background-color: #d81b60;
+
+  .logo {
+    a {
+      display: inline-block;
+      width: 80px;
+      padding: 10px 15px;
+
+      img {
+        width: 100%;
+      }
+    }
   }
 
-  .card-content .phrase {
-    font-size: 40px;
-    margin-top: 38px;
-    text-align: center;
-  }
-}
+  .nav {
+    text-align: right;
 
-.order-form {
-  .question {
-    padding: 15px 10px;
-    min-height: 100px;
+    ul.menu {
+          margin: 34px 20px 30px 0px;
 
-    p {
-      display: block;
-      margin: 5px 0;
-      label {
-        font-size: 16px;
-        text-transform: capitalize;
-        color: black;
-        top: 0;
+      li {
+        display: inline-block;
+        margin-left: 20px;
+        position: relative;
+
+        &:hover{
+          .tooltip-text {
+            visibility: visible;
+          }
+        }
+
+        .tooltip-text {
+          visibility: hidden;
+          position: absolute;
+          width: inherit;
+          bottom: -22px;
+          left: -3px;
+          background-color: #ad1457;
+          display: inline-block;
+          color: white;
+          border: 1px solid white;
+          border-radius: 4px;
+          font-size: 12px;
+          padding: 2px 5px;
+        }
+
+        a {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          background-size: contain;
+
+          &.home-tab {
+            background-image: url("/assets/images/icons/png/home.png");
+            transition: all linear .50s;
+            &:hover {
+              background-image: url("/assets/images/icons/png/filled-icons/home.png");
+            }
+          }
+          &.newmenu-tab{
+            background-image: url("/assets/images/icons/png/newmenu.png");
+            transition: all linear .50s;
+            &:hover {
+              background-image: url("/assets/images/icons/png/filled-icons/newmenu.png");
+            }
+          }
+          &.orders-tab{
+            background-image: url("/assets/images/icons/png/orders.png");
+            transition: all linear .50s;
+            &:hover {
+              background-image: url("/assets/images/icons/png/filled-icons/orders.png");
+            }
+          }
+          &.notifications-tab{
+            background-image: url("/assets/images/icons/png/notification.png");
+            transition: all linear .50s;
+            &:hover {
+              background-image: url("/assets/images/icons/png/filled-icons/notification.png");
+            }
+          }
+
+          &.feedback-tab{
+            background-image: url("/assets/images/icons/png/feedback.png");
+            transition: all linear .50s;
+            &:hover {
+              background-image: url("/assets/images/icons/png/filled-icons/feedback.png");
+            }
+          }
+
+          &.exit-btn{
+            background-image: url("/assets/images/icons/png/exit.png");
+            transition: all linear .50s;
+            cursor: pointer;
+            
+            &:hover {
+              background-image: url("/assets/images/icons/png/filled-icons/exit.png");
+            }
+          }
+        }
       }
     }
   }

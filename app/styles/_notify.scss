@@ -1,0 +1,55 @@
+#notificationsTable {
+  th {
+    font-family: sans-serif;
+    font-weight: 300 !important;
+    padding: 5px 10px;
+  }
+
+  td {
+    padding: 0px 10px;
+    font-size: 16px;
+    line-height: 0;
+  }
+
+  .username {
+    text-transform: capitalize;
+  }
+
+  .icon-cell {
+    i {
+      padding-top: 5px;
+    }
+  }
+
+  .checks {
+    width: 50px;
+  }
+}
+
+.notifications-add-member {
+  margin-top: 20px !important;
+
+  .form {
+    input {
+      width: 30%;
+      margin-right: 20px;
+    }
+  }
+}
+
+.toolbar {
+  display: inline-block;
+  float: right;
+
+  button.btn {
+    padding: 2px 12px;
+    font-size: 13px;
+    height: 27px;
+    line-height: 0px;
+    margin-top: 12px;
+  }
+}
+
+.notifications.page-title {
+  display: inline-block;
+}

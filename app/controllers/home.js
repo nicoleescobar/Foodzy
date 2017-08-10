@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
   showAdminSettings: false,
   hideMenu: true,
   ordersFilled: null,
+  showLoading: true,
 
   actions: {
     saveOrder: function () {
@@ -53,8 +54,14 @@ export default Ember.Controller.extend({
 
   setupMenu: function () {
     var menu = this.menu;
+    var that = this;
     if (Ember.isPresent(menu.soup)) {
       this.set("showSoup", true);
+      var soup = menu.soup;
+      if (soup.indexOf('sopa')||soup.indexOf('Sopa')) {
+        var splitsuop = soup.split(' ');
+        Ember.set(that.menu, 'soup', splitsuop[splitsuop.length - 1]);
+      }
     }
     if (Ember.isPresent(menu.drink)) {
       this.set("showDrink", true);
@@ -80,5 +87,6 @@ export default Ember.Controller.extend({
     this.set('showAdminSettings', false);
     this.set('hideMenu', true);
     this.set('ordersFilled', null);
+    this.set('showLoading', true);
   }
 });

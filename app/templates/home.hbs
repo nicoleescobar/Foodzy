@@ -1,7 +1,4 @@
 <div class="container">
-
-  <h3> Menu del Dia </h3>
-
 {{#if hideMenu}}
 <div class="feedback">
   <p class="phrase"> Parece que ya has ordenado. </p> <br>
@@ -9,6 +6,12 @@
 </div>
 
 {{else}}
+<div class="page-title">
+  <img src="/assets/images/orders.png" alt="">
+  <h4> Menu del Dia </h4>
+</div>
+
+<div class="divider"></div>
 
 <form class="row order-form">
   <div class="col s12 m4 form">
@@ -21,7 +24,7 @@
       <div class="question">
         {{#each menu.proteins as |protein|}}
           <p>
-            <input  type="radio" name="protein" id={{protein.id}} onchange={{action "selectProtein" protein.name}} />
+            <input type="radio" name="protein" id={{protein.id}} onchange={{action "selectProtein" protein.name}} />
             <label for={{protein.id}}>{{protein.name}}</label>
           </p>
         {{/each}}
@@ -102,31 +105,26 @@
     </div>
   {{/if}}
 </form>
+<div class="right-align">
+  <button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveOrder"}}> Enviar
+      <i class="material-icons right">send</i>
+  </button>
+</div>
 
-<div class="divider"></div>
-<button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveOrder"}}> Enviar
-    <i class="material-icons right">send</i>
-</button>
 
 {{/if}}
-
-  <div class="menu-btn">
-    <div class="fixed-action-btn horizontal click-to-toggle">
-      <a class="btn-floating btn-large light-blue lighten-1">
-        <i class="material-icons">menu</i>
-      </a>
-      <ul>
-        {{#if showAdminSettings}}
-          <li><a href='/new' class="btn-floating light-blue lighten-3">  <i class="material-icons">restaurant</i>  </a></li>
-          <li><a class="btn-floating light-blue lighten-2">  <i class="material-icons">notifications_none</i>  </a></li>
-          <li><a href='/orders' class="btn-floating light-blue lighten-1">  <i class="material-icons">playlist_add_check</i>  </a></li>
-        {{/if}}
-        <li><a {{action "logOut"}} class="btn-floating light-blue">  <i class="material-icons">exit_to_app</i> </a></li>
-      </ul>
-    </div>
-  </div>
 
 {{#if showLoadingGreet}}
   {{loading-component user=user.displayName}}
 {{/if}}
 </div>
+
+
+{{#if showLoading}}
+<div class="modal-component preloader valign-wrapper">
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
+</div>
+{{/if}}

@@ -8,6 +8,7 @@ export default Ember.Route.extend({
   actions: {
     saveMenu: function () {
       var controller = this.controllerFor("new-lunch");
+      controller.set('showLoading', true);
       var date = new Date().toString();
       Ember.set(controller.menu, "menuDate", date);
       //add Validation

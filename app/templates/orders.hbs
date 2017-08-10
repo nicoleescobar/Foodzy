@@ -1,6 +1,15 @@
-<div class="orders-container">
+<div class="orders-container container">
+<div class="page-title">
+  <img src="/assets/images/orders.png" alt="">
+  <h4> Ordenes </h4>
+</div>
 
-<img src="/assets/images/orders.png" alt=""> <h3> Peticiones </h3>
+{{#if notOrdersYet}}
+  <div class="empty-box">
+    <span> No hay ordenes disponibles aun. </span>
+    <a href="/notify"> Notificar al equipo </a>
+  </div>
+{{else}}
 <table class="bordered highlight striped highlight responsive-table orders">
   <thead>
     <tr>
@@ -46,4 +55,6 @@
     {{/each}}
   </tbody>
 </table>
+
+{{/if}}
 </div>

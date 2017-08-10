@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="page-title notifications">
+    <img src="/assets/images/notification.png" alt="">
+    <h4> Notificar Al Equipo</h4>
+  </div>
+
+  <div class="toolbar">
+    <button class="waves-effect waves-light btn teal darken-2"> Notificar </button>
+  </div>
+
+ <table class="bordered highlight striped highlight responsive-table orders" id="notificationsTable">
+   <thead>
+     <tr>
+       <th> Notificar </th>
+       <th> Miembro </th>
+       <th class="center-align"> Ordenó </th>
+     </tr>
+   </thead>
+   <tbody>
+     {{#each users as |user index|}}
+     <tr>
+       <td class="checks">
+         {{#if user.reply}}
+          <p>
+             <input type="checkbox" class="filled-in" id={{index}} disabled />
+             <label for={{index}}></label>
+          </p>
+          {{else}}
+          <p>
+             <input type="checkbox" class="filled-in" id={{index}} checked={{user.selected}} />
+             <label for={{index}}></label>
+          </p>
+          {{/if}}
+       </td>
+
+       <td class="username"> {{user.name}} </td>
+
+       {{#if user.reply}}
+        <td class="center-align icon-cell"><i class="material-icons" style="color:#00bfa5">done</i></td>
+       {{else}}
+        <td class="center-align icon-cell"><i class="material-icons" style="color:#b71c1c">clear</i></td>
+       {{/if}}
+     </tr>
+     {{/each}}
+   </tbody>
+ </table>
+</div>
+
+<div class="container notifications-add-member">
+  <div class="page-title">
+    <img src="/assets/images/icons/png/team.png" alt="">
+    <h5> Agregar Miembros </h5>
+  </div>
+  <div class="divider"></div>
+
+  <div class="form">
+    {{input class="validate" type="text" placeholder="Nombre" value=member.name}}
+    {{input class="validate" type="email" placeholder="Correo Electronico" value=member.mail}}
+
+    <button class="waves-effect waves-light btn light-blue lighten-1" {{action "addMember"}}>Agregar</button>
+
+  </div>
+
+</div>
