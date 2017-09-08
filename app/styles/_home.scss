@@ -54,36 +54,36 @@
           &.home-tab {
             background-image: url("/assets/images/icons/png/home.png");
             transition: all linear .50s;
-            &:hover {
+            &:hover, &.active {
               background-image: url("/assets/images/icons/png/filled-icons/home.png");
             }
           }
           &.newmenu-tab{
             background-image: url("/assets/images/icons/png/newmenu.png");
             transition: all linear .50s;
-            &:hover {
+            &:hover, &.active {
               background-image: url("/assets/images/icons/png/filled-icons/newmenu.png");
             }
           }
           &.orders-tab{
             background-image: url("/assets/images/icons/png/orders.png");
             transition: all linear .50s;
-            &:hover {
+            &:hover, &.active {
               background-image: url("/assets/images/icons/png/filled-icons/orders.png");
             }
           }
           &.notifications-tab{
-            background-image: url("/assets/images/icons/png/notification.png");
+            background-image: url("/assets/images/icons/png/team-white.png");
             transition: all linear .50s;
-            &:hover {
-              background-image: url("/assets/images/icons/png/filled-icons/notification.png");
+            &:hover, &.active {
+              background-image: url("/assets/images/icons/png/filled-icons/team.png");
             }
           }
 
           &.feedback-tab{
             background-image: url("/assets/images/icons/png/feedback.png");
             transition: all linear .50s;
-            &:hover {
+            &:hover, &.active {
               background-image: url("/assets/images/icons/png/filled-icons/feedback.png");
             }
           }
@@ -92,7 +92,7 @@
             background-image: url("/assets/images/icons/png/exit.png");
             transition: all linear .50s;
             cursor: pointer;
-            
+
             &:hover {
               background-image: url("/assets/images/icons/png/filled-icons/exit.png");
             }

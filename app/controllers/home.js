@@ -17,8 +17,13 @@ export default Ember.Controller.extend({
   hideMenu: true,
   ordersFilled: null,
   showLoading: true,
+  showDeniedNotifications: false,
 
   actions: {
+    closesDeniedNotifications: function () {
+      this.set('showDeniedNotifications', false);
+    },
+
     saveOrder: function () {
       var soupChecbox = Ember.$("#soupCheck").prop( "checked" );
       var drinkCheckbox = Ember.$("#drinkCheck").prop( "checked" );
@@ -88,5 +93,6 @@ export default Ember.Controller.extend({
     this.set('hideMenu', true);
     this.set('ordersFilled', null);
     this.set('showLoading', true);
+    this.set('showDeniedNotifications', false);
   }
 });

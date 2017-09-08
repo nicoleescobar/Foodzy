@@ -6,29 +6,29 @@
      <div class="nav col s10 m10">
        <ul class="menu">
          <li>
-           <a href="/" class="home-tab"> </a>
+           <a href="/" class="home-tab {{active-route 'home' activeRoute}}"> </a>
            <span class="tooltip-text"> Inicio </span>
          </li>
 
          {{#if isAdminUser}}
          <li>
-           <a href="/new" class="newmenu-tab"> </a>
+           <a href="/new" class="newmenu-tab {{active-route 'new-lunch' activeRoute}}"> </a>
            <span class="tooltip-text"> +Menu </span>
          </li>
 
          <li>
-           <a href="/orders" class="orders-tab"> </a>
+           <a href="/orders" class="orders-tab {{active-route 'orders' activeRoute}}"> </a>
            <span class="tooltip-text"> Ordenes </span>
          </li>
 
          <li>
-           <a href="/notify" class="notifications-tab"> </a>
+           <a href="/notify" class="notifications-tab {{active-route 'notify' activeRoute}}"> </a>
            <span class="tooltip-text"> Notificar </span>
          </li>
          {{/if}}
 
          <li>
-           <a href="feedback" class="feedback-tab"> </a>
+           <a href="feedback" class="feedback-tab {{active-route 'feedback' activeRoute}}"> </a>
            <span class="tooltip-text"> Feedback </span>
          </li>
 

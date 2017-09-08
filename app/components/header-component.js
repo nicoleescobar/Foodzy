@@ -3,9 +3,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   isAdminUser: false,
   user: null,
+  activeRoute: "/",
 
   didReceiveAttrs: function () {
     this.checkAdminUsers();
+    this.set('activeRoute', this.get('router.currentRouteName'));
   },
 
   actions: {

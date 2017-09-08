@@ -6,7 +6,7 @@
     <title>Foodzy</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="assets/config/manifest.json">
     <link rel="shortcut icon" type="image/png" href="/assets/images/icons/png/mlogo2.png"/>
 
     {{content-for "head"}}
@@ -42,8 +42,8 @@
         messagingSenderId: "327674536119"
       };
       firebase.initializeApp(config);
+      const messaging = firebase.messaging();
     </script>
-
 
     {{content-for "body-footer"}}
   </body>

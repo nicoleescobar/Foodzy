@@ -2,39 +2,19 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function () {
-    this.loadUsers();
-    this.loadUsersToNotify();
+    this.getUsers();
   },
 
-  actions: {
-    addMember: function () {
-      var controller = this.controllerFor("notify");
-      var that = this;
-      if(Ember.isPresent(controller.member.name)&&Ember.isPresent(controller.member.mail)){
-        controller.users.push(controller.member);
-        firebase.database().ref('users').set(controller.users);
-        that.loadUsers();
-        that.loadUsersToNotify();
+  getUsers: function () {
+    var controller = this.controllerFor("notify");
+
+    firebase.database().ref('users').once('value', function(snapshot) {
+      var users = snapshot.val();
+      if (Ember.isPresent(users)) {
+        controller.set('users', users.users)
+      } else {
+        controller.set('users', []);
       }
-      controller.set('member', {name: null, mail: null},)
-    }
-  },
-
-  loadUsers: function () {
-    var controller = this.controllerFor("notify");
-    var database = firebase.database();
-    database.ref('users').once('value').then(function(snapshot) {
-      controller.set("users", snapshot.val());
-    });
-  },
-
-  loadUsersToNotify: function () {
-    var controller = this.controllerFor("notify");
-    var database = firebase.database();
-    database.ref('orders').once('value').then(function(snapshot) {
-      controller.set("orders", snapshot.val());
-      controller.usersFromOrders();
-      controller.setupUsers();
     });
   },
 
