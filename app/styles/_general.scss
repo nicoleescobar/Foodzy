@@ -65,7 +65,7 @@ html body {
 }
 
 * {
-  transition: all linear .38s;
+  transition: all linear .10s;
 }
 
 .container {
@@ -88,7 +88,7 @@ strong {
  }
 
 .phrase {
-  font-family: 'Sacramento', cursive;
+  font-family: 'Pacifico', cursive;
   font-size: 20px;
   line-height: 41px;
 }
@@ -210,13 +210,13 @@ form .form .descp-input input{
   }
 
   .loading-container {
-    height: 220px;
-    width: 500px;
+    height: 150px;
+    width: 490px;
 
     p {
       text-align: center;
       color: #ec407a;
-      font-size: 30px;
+      font-size: 25px;
       margin: 10px;
       text-transform: capitalize;
     }
