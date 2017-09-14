@@ -4,9 +4,7 @@ export default Ember.Route.extend({
   users: null,
 
   model: function () {
-    var that = this;
     var controller = this.controllerFor("home");
-
     this.getUsers();
     this.checkUser();
     this.getOrders();

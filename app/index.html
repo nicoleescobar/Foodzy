@@ -31,7 +31,10 @@
 
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+    <script type="text/javascript" src="{{rootURL}}assets/firebase-messaging-sw.js"></script>
     <script>
+    /*global firebase*/
+    /*eslint no-undef: "error"*/
       // Initialize Firebase
       var config = {
         apiKey: "AIzaSyAZc7veRbfpT2G7YK5a-QG4cXn6Ty4JAxY",
