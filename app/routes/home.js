@@ -4,37 +4,9 @@ export default Ember.Route.extend({
   users: null,
 
   model: function () {
-    var controller = this.controllerFor("home");
     this.getUsers();
     this.checkUser();
     this.getOrders();
-
-    messaging.requestPermission()
-      .then(function() {
-        messaging.getToken()
-          .then(function(currentToken) {
-            if (currentToken) {
-              sendTokenToServer(currentToken);
-              updateUIForPushEnabled(currentToken);
-            } else {
-              // Show permission request.
-              console.log('No Instance ID token available. Request permission to generate one.');
-              // Show permission UI.
-              updateUIForPushPermissionRequired();
-              setTokenSentToServer(false);
-            }
-          })
-          .catch(function(err) {
-            console.log('An error occurred while retrieving token. ', err);
-          });
-      })
-      .catch(function() {
-        controller.set('showDeniedNotifications', true);
-      });
-
-    messaging.onMessage(function(payload) {
-      console.log("Message received. ", payload);
-    });
   },
 
   cleanController: function () {
@@ -60,6 +32,7 @@ export default Ember.Route.extend({
       if (user) {
         controller.set('user', user.providerData[0]);
         that.getMenu();
+        that.requestPermissionForNotifications();
         that.saveUser(user);
       } else {
         var provider = new firebase.auth.GoogleAuthProvider();
@@ -94,15 +67,17 @@ export default Ember.Route.extend({
 
   saveUser: function (user) {
     var that = this;
+    var controller = this.controllerFor("home");
+
     if (this.users) {
-      var newUser = {username: user.displayName, email: user.email, uid: user.uid};
+      var newUser = {username: user.displayName, email: user.email, uid: user.uid , userToken:  controller.user.userToken};
       if (!that.userExist(newUser)) {
         var users = this.get('users');
         users.push(newUser);
         firebase.database().ref('users').set({users});
       }
     } else {
-      setTimeout(function(){ that.saveUser(user) }, 3000);
+      setTimeout(function(){ that.saveUser(user); }, 3000);
     }
   },
 
@@ -111,7 +86,7 @@ export default Ember.Route.extend({
     firebase.database().ref('users').once('value', function(snapshot) {
       var users = snapshot.val();
       if (Ember.isPresent(users)) {
-        that.set('users', users.users)
+        that.set('users', users.users);
       } else {
         that.set('users', []);
       }
@@ -127,18 +102,32 @@ export default Ember.Route.extend({
     return false;
   },
 
-  getToken: function () {
-    messaging.getToken()
-    .then(function(currentToken) {
-      if (currentToken) {
-        console.log(currentToken);
-      } else {
-        console.log('No Instance ID token available. Request permission to generate one.');
-      }
-    })
-    .catch(function(err) {
-      console.log('An error occurred while retrieving token. ', err);
-    });
+  requestPermissionForNotifications: function (user) {
+    var controller = this.controllerFor("home");
+    var that = this;
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+      .then(function() {
+        messaging.getToken()
+        .then(function(currentToken) {
+          if (currentToken) {
+            that.setUserToken(currentToken, user);
+            return currentToken;
+          } else {
+            that.requestPermissionForNotifications();
+          }
+        });
+      })
+      .catch(function(err) {
+        console.log('Unable to get permission to notify.', err);
+        controller.set("showDeniedNotifications", true);
+      });
+  },
+
+  setUserToken: function (token) {
+    var controller = this.controllerFor("home");
+    Ember.set(controller.user, "userToken", token);
   }
+
 
 });
