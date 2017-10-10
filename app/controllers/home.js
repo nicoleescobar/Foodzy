@@ -18,6 +18,7 @@ export default Ember.Controller.extend({
   ordersFilled: null,
   showLoading: true,
   showDeniedNotifications: false,
+  orderedLunch: null,
 
   actions: {
     closesDeniedNotifications: function () {
@@ -74,7 +75,7 @@ export default Ember.Controller.extend({
   },
 
   deliverOrder: function () {
-    this.set('showLoadingGreet', true);
+    this.set('hideMenu', true);
     var order = {
       user: this.user,
       order: this.order,

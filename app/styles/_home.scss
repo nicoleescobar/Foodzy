@@ -53,14 +53,12 @@
 
           &.home-tab {
             background-image: url("/assets/images/icons/png/home.png");
-            transition: all linear .50s;
             &:hover, &.active {
               background-image: url("/assets/images/icons/png/filled-icons/home.png");
             }
           }
           &.newmenu-tab{
             background-image: url("/assets/images/icons/png/newmenu.png");
-            transition: all linear .50s;
             &:hover, &.active {
               background-image: url("/assets/images/icons/png/filled-icons/newmenu.png");
             }
@@ -100,5 +98,32 @@
         }
       }
     }
+  }
+}
+
+
+.orderHome {
+  h3 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  .description {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    vertical-align: top;
+
+    span {
+      font-size: 16px;
+    }
+  }
+  .orderImage {
+    width: 67px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  a {
+    display: block;
   }
 }

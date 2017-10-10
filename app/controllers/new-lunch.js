@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
   addDrink: false,
   addSoup: false,
   deleteError: false,
+  isSaved: false,
 
   actions: {
     enableOption: function (option, optionId) {

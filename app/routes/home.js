@@ -44,15 +44,19 @@ export default Ember.Route.extend({
 
   checkIfOrder:function () {
     var cont = 0;
+    var menuSelected = null;
     var controller = this.controllerFor("home");
     for (var prop in controller.ordersFilled) {
       var mail = controller.ordersFilled[prop].user.email;
       if (mail === controller.user.email) {
         cont = cont + 1;
+        menuSelected = controller.ordersFilled[prop].order;
       }
     }
     controller.set('showLoading', false);
     controller.set('hideMenu', cont > 0);
+    controller.set('orderedLunch', menuSelected);
+    console.log(controller.orderedLunch, menuSelected);
   },
 
   getOrders: function () {
