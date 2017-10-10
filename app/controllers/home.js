@@ -76,6 +76,7 @@ export default Ember.Controller.extend({
 
   deliverOrder: function () {
     this.set('hideMenu', true);
+    this.set("orderedLunch", this.order);
     var order = {
       user: this.user,
       order: this.order,

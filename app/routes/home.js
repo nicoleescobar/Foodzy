@@ -56,7 +56,6 @@ export default Ember.Route.extend({
     controller.set('showLoading', false);
     controller.set('hideMenu', cont > 0);
     controller.set('orderedLunch', menuSelected);
-    console.log(controller.orderedLunch, menuSelected);
   },
 
   getOrders: function () {
@@ -74,7 +73,7 @@ export default Ember.Route.extend({
     var controller = this.controllerFor("home");
 
     if (this.users) {
-      var newUser = {username: user.displayName, email: user.email, uid: user.uid , userToken:  controller.user.userToken};
+      var newUser = {username: user.displayName, email: user.email, uid: user.uid , userToken: controller.user.userToken};
       if (!that.userExist(newUser)) {
         var users = this.get('users');
         users.push(newUser);

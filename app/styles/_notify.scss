@@ -9,10 +9,26 @@
     padding: 8px 10px;
     font-size: 16px;
     line-height: 0;
+
+    button {
+      background-color: #d81b61;
+      border: 0;
+      border-radius: 4px;
+      padding: 2px 2px;
+    }
+
+    img {
+      width: 20px;
+    }
   }
 
   .username {
     text-transform: capitalize;
+
+    span {
+      display: block;
+      padding: 10px 0px;
+    }
   }
 
   .icon-cell {
@@ -23,17 +39,6 @@
 
   .checks {
     width: 50px;
-  }
-}
-
-.notifications-add-member {
-  margin-top: 20px !important;
-
-  .form {
-    input {
-      width: 30%;
-      margin-right: 20px;
-    }
   }
 }
 
@@ -64,13 +69,4 @@
 
 .notifications.page-title {
   display: inline-block;
-}
-
-.notifications-add-member {
-  button.btn {
-    padding: 2px 12px;
-    font-size: 13px;
-    height: 27px;
-    line-height: 0px;
-  }
 }

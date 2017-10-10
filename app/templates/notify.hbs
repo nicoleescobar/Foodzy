@@ -14,17 +14,31 @@
  <table class="bordered highlight striped highlight responsive-table orders" id="notificationsTable">
    <thead>
      <tr>
-       <th> Notificar </th>
-       <th> Miembro </th>
+       <th> Nº </th>
+       <th> Nombre </th>
+       <th> Email </th>
+       <th> Respondio/Notificar </th>
      </tr>
    </thead>
    <tbody>
-     {{#each users as |user index|}}
+     {{#each userList as |user index|}}
      <tr>
        <td class="checks">
-         <i class="fa fa-bell-o" aria-hidden="true"></i>
+         {{index}}
        </td>
-       <td class="username"> {{user.username}} </td>
+
+       <td class="username"> <span> {{user.username}} </span>  </td>
+       <td> {{user.email}} </td>
+
+       <td>
+         {{#if user.responded}}
+            <img src="/assets/images/done.svg" alt="">
+         {{else}}
+            <button class="notifications-btn" {{action "notifySingleUser" user}}>
+              <img src="/assets/images/icons/png/filled-icons/notification.png" alt="">
+            </button>
+         {{/if}}
+       </td>
      </tr>
      {{/each}}
    </tbody>

@@ -73,7 +73,7 @@
         <div class="question">
           {{#each menu.additions as |addition index|}}
             <p>
-              <input type="radio" id={{addition.id}} value={{addition.name}} onchange={{action "selectAddition" addition.name}}/>
+              <input type="radio" name="addition" id={{addition.id}} onchange={{action "selectAddition" addition.name}}/>
               <label for={{addition.id}}>{{addition.name}}</label>
             </p>
           {{/each}}
