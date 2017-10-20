@@ -1,0 +1,17 @@
+{{#if showNotification}}
+  <div class="notification-content">
+    <div class="icon">
+
+    </div>
+    <div class="notification-text">
+      <div class="notification-header">
+        <span> {{notification.title}} </span>
+      </div>
+      <div class="notification-body">
+        <span> {{notification.body}} </span>
+      </div>
+      <a class="btn-flat" href={{notification.click_action}}> Ver </a>
+      <a class="btn-flat" {{action "hide"}}> Ocultar </a>
+    </div>
+  </div>
+{{/if}}

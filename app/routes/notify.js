@@ -11,16 +11,18 @@ export default Ember.Route.extend({
   actions: {
     notifySingleUser: function (user) {
       var service = this.get("notificationService");
-      var data =  {
+      var body =  {
          "notification": {
            "title": "Testing Notifications",
            "body": "Aqui el body papuuuuuh",
            "click_action": "http://localhost:4200"
          },
 
-         "to": user
-       }
-      //service.sendSingleNotification()
+         "to": user.userToken
+       };
+
+       var data = JSON.stringify(body);
+      service.sendSingleNotification(data);
     }
   },
 
