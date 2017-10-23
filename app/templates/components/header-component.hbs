@@ -1,0 +1,43 @@
+<div class="header">
+  <div class="row">
+    <div class="logo col s2 m2">
+      <a href="/"> <img src="/assets/images/icons/linear/logo-white.png" alt=""> </a>
+    </div>
+     <div class="nav col s10 m10">
+       <ul class="menu">
+         <li>
+           {{#link-to "home" class="home-tab" }} {{/link-to}}
+           <span class="tooltip-text"> Inicio </span>
+         </li>
+
+         {{#if isAdminUser}}
+         <li>
+           {{#link-to "new-lunch" class="newmenu-tab" }} {{/link-to}}
+           <span class="tooltip-text"> +Menu </span>
+         </li>
+
+         <li>
+           {{#link-to "orders" class="orders-tab" }} {{/link-to}}
+           <span class="tooltip-text"> Ordenes </span>
+         </li>
+
+         <li>
+           {{#link-to "notify" class="notifications-tab" }} {{/link-to}}
+           <span class="tooltip-text"> Notificar </span>
+         </li>
+         {{/if}}
+
+         <li>
+           {{#link-to "feedback" class="feedback-tab" }} {{/link-to}}
+           <span class="tooltip-text"> Feedback </span>
+         </li>
+
+         <li>
+           <a class="exit-btn" {{action "logOut"}}> </a>
+           <span class="tooltip-text"> Salir </span>
+         </li>
+
+       </ul>
+     </div>
+  </div>
+</div>

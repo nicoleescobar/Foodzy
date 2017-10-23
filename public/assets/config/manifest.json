@@ -1,0 +1,21 @@
+{
+  "short_name": "Foodzy",
+  "name": "Foodzy",
+  "start_url": "/",
+  "gcm_sender_id": "103953800507",
+  "background_color": "#fff",
+  "display": "standalone",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "/assets/images/icons/png/mlogo3.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "/assets/images/icons/png/mlogo6.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    }
+  ]
+}

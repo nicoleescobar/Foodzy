@@ -1,128 +1,151 @@
-<div class="row">
-  <div class="col s12 m12 menu-header">
-    <h4 class="header"> Lunch Menu </h4>
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="assets/images/food.jpg">
+<div class="container">
+{{#if hideMenu}}
+  <div class="orderHome">
+    <h3 class="phrase"> Ya has ordenado! </h3>
+
+    <img class="orderImage" src="/assets/images/icons/multicolor/menuOrder.svg" alt="">
+    <div class="description">
+      <span> Tu Orden Fue: </span> <br>
+      <span> {{orderedLunch.protein}} con </span>
+      <span> {{#each orderedLunch.accomps as |accomp|}} {{accomp}}, {{/each}} </span>
+      <span> adicionaste {{orderedLunch.addition}}</span>
+      {{#if orderedLunch.soup}} <span> con Sopas </span> {{/if}}
+      {{#if orderedLunch.drink}} <span> y Jugo </span> {{/if}}
+      <br>
+      <span> Buen Provecho! </span>
+    </div>
+
+    <a href="/feedback" class="feedback-link"> Tienes propuestas, dudas o comentarios que nos ayuden a mejorar? </a>
+  </div>
+
+{{else}}
+  <div class="page-title">
+    <img src="/assets/images/icons/multicolor/menu.svg" alt="">
+    <h4> Menu del Dia </h4>
+  </div>
+
+  <div class="divider"></div>
+
+  <form class="row order-form">
+    <div class="col s12 m6 form">
+      <div class="icon">
+        <img src="/assets/images/icons/multicolor/protein.svg" alt="">
+        <h5> Proteinas </h5>
       </div>
-      <div class="card-stacked">
-        <div class="card-content">
-          <p class="phrase">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</p>
+
+      <div class="input-field">
+        <div class="question">
+          {{#each menu.proteins as |protein|}}
+            <p>
+              <input type="radio" name="protein" id={{protein.id}} onchange={{action "selectProtein" protein.name}} />
+              <label for={{protein.id}}>{{protein.name}}</label>
+            </p>
+          {{/each}}
         </div>
       </div>
     </div>
+
+    <div class="col s12 m6 form">
+      <div class="icon">
+        <img src="/assets/images/icons/multicolor/salad.svg" alt="">
+        <h5> Acompañamientos </h5>
+      </div>
+
+      <div class="input-field">
+        <div class="question">
+          {{#each menu.accomps as |accomp index|}}
+            <p>
+              <input type="checkbox" id={{accomp.id}} onchange={{action "selectAccomp" accomp index}}/>
+              <label for={{accomp.id}}>{{accomp.name}}</label>
+            </p>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m6 form">
+      <div class="icon">
+        <img src="/assets/images/icons/multicolor/avocado.svg" alt="">
+        <h5> Adicionales </h5>
+      </div>
+
+      <div class="input-field">
+        <div class="question">
+          {{#each menu.additions as |addition index|}}
+            <p>
+              <input type="radio" name="addition" id={{addition.id}} onchange={{action "selectAddition" addition.name}}/>
+              <label for={{addition.id}}>{{addition.name}}</label>
+            </p>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    {{#if (or showSoup showDrink)}}
+      <div class="col s12 m6 form">
+        <div class="other-food-content">
+          {{#if showSoup}}
+          <div class="soup-container">
+            <div class="icon">
+              <img src="/assets/images/icons/multicolor/soup.svg" alt="">
+              <h5> Sopa de {{menu.soup}}</h5>
+            </div>
+            <div class="switch">
+              <label>  No <input id="soupCheck" type="checkbox"> <span class="lever"></span> Si </label>
+            </div>
+          </div>
+          {{/if}}
+
+          {{#if showDrink}}
+            <div class="drink-container">
+              <div class="icon">
+                <img src="/assets/images/icons/multicolor/drink.svg" alt="">
+                <h5> {{menu.drink}} </h5>
+              </div>
+              <div class="switch">
+                  <label>  No <input id="drinkCheck" type="checkbox">  <span class="lever"></span> Si </label>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    {{/if}}
+  </form>
+
+
+  <div class="right-align">
+    <button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveOrder"}}> Enviar
+        <i class="material-icons right">send</i>
+    </button>
   </div>
+{{/if}}
+
 </div>
 
-<form class="row order-form">
-  <div class="col s12 m4 form">
-    <div class="icon">
-      <img src="/assets/images/icons/png/meat.png" alt="">
-      <h5> Proteinas </h5>
-    </div>
-
-    <div class="input-field">
-      <div class="question">
-        {{#each menu.proteins as |protein|}}
-          <p>
-            <input  type="radio" name="protein" id={{protein.id}} onchange={{action "selectProtein" protein.name}} />
-            <label for={{protein.id}}>{{protein.name}}</label>
-          </p>
-        {{/each}}
-      </div>
-    </div>
-  </div>
-
-  <div class="col s12 m4 form">
-    <div class="icon">
-      <img src="/assets/images/icons/png/salad.png" alt="">
-      <h5> Acompañamientos </h5>
-    </div>
-
-    <div class="input-field">
-      <div class="question">
-        {{#each menu.accomps as |accomp index|}}
-          <p>
-            <input type="checkbox" id={{accomp.id}} onchange={{action "selectAccomp" accomp index}}/>
-            <label for={{accomp.id}}>{{accomp.name}}</label>
-          </p>
-        {{/each}}
-      </div>
-    </div>
-  </div>
-
-  <div class="col s12 m4 form">
-    <div class="icon">
-      <img src="/assets/images/icons/png/potatoes.png" alt="">
-      <h5> Adicionales </h5>
-    </div>
-
-    <div class="input-field">
-      <div class="question">
-        {{#each menu.additions as |addition index|}}
-          <p>
-            <input type="radio" id={{addition.id}} value={{addition.name}} onchange={{action "selectAddition" addition.name}}/>
-            <label for={{addition.id}}>{{addition.name}}</label>
-          </p>
-        {{/each}}
-      </div>
-    </div>
-  </div>
-</form>
-
-<form class="row">
-  {{#if showSoup}}
-    <div class="col s12 m4 form">
-      <div class="col s12 icon">
-        <img src="/assets/images/icons/png/soup.png" alt="">
-        <h5> Sopa de {{menu.soup}}</h5>
-      </div>
-
-      <div class="switch">
-        <label>
-          No
-          <input id="soupCheck" type="checkbox">
-          <span class="lever"></span>
-          Si
-        </label>
-      </div>
-    </div>
-  {{/if}}
-
-  {{#if showDrink}}
-    <div class="col s12 m4 form">
-      <div class="col s12 icon">
-        <img src="/assets/images/icons/png/soda.png" alt="">
-        <h5> {{menu.drink}} </h5>
-      </div>
-      <div class="switch" >
-        <label>
-          No
-          <input id="drinkCheck" type="checkbox">
-          <span class="lever"></span>
-          Si
-        </label>
-      </div>
-    </div>
-  {{/if}}
-</form>
-
-<div class="divider"></div>
-<button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveOrder"}}> Enviar
-    <i class="material-icons right">send</i>
-</button>
-
-
-<div class="menu-btn">
-  <div class="fixed-action-btn horizontal click-to-toggle">
-    <a class="btn-floating btn-large light-blue lighten-1">
-      <i class="material-icons">menu</i>
-    </a>
-    <ul>
-      <li><a {{action "checkUser"}} class="btn-floating light-blue lighten-3">  <i class="material-icons">restaurant</i>  </a></li>
-      <li><a class="btn-floating light-blue lighten-2">  <i class="material-icons">notifications_none</i>  </a></li>
-      <li><a class="btn-floating light-blue lighten-1">  <i class="material-icons">playlist_add_check</i>  </a></li>
-      <li><a {{action "logOut"}} class="btn-floating light-blue">            <i class="material-icons">exit_to_app</i>         </a></li>
-    </ul>
+{{#if showLoading}}
+<div class="modal-component preloader valign-wrapper">
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
   </div>
 </div>
+{{/if}}
+
+{{#if showDeniedNotifications}}
+<div class="modal-component valign-wrapper">
+  <div class="modal-container valign-wrapper">
+    <img src="/assets/images/alarm.svg" alt="">
+    <p>
+      Hola! <br>
+      Foodzy quiere notificarte cuando el menu del dia este listo. <br>
+      Por favor activa las notificaciones en la configuracion de tu browser. <br>
+      <a href="https://support.google.com/chrome/answer/3220216?co=GENIE.Platform%3DDesktop&hl=es-419"> Chrome </a> ,
+      <a href="https://support.mozilla.org/es/kb/centro-de-control-administra-la-configuracion-de-privacidad-seguridad-pagina#w_permisos"> Firefox </a> o
+      <a href="https://support.apple.com/kb/PH21445?locale=en_US&viewlocale=ar_SA"> Safari </a>
+    </p>
+
+    <div class="close" {{action "closesDeniedNotifications"}}>
+      <i class="fa fa-times"></i>
+    </div>
+  </div>
+</div>
+{{/if}}

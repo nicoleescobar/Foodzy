@@ -12,6 +12,9 @@ export default Ember.Controller.extend({
   addDrink: false,
   addSoup: false,
   deleteError: false,
+  isSaved: false,
+  showLoading: false,
+  userList: null,
 
   actions: {
     enableOption: function (option, optionId) {
@@ -22,7 +25,7 @@ export default Ember.Controller.extend({
     addProtein: function () {
       var proteins = this.menu.proteins;
       var id = this.menu.proteins.length - 1;
-      proteins.push({name: "", id: id})
+      proteins.push({name: "", id: id});
       Ember.set(this.menu, "proteins", proteins);
       this.notifyPropertyChange('menu');
     },
@@ -30,7 +33,7 @@ export default Ember.Controller.extend({
     addAccomp: function () {
       var accomps = this.menu.accomps;
       var id = this.menu.accomps.length;
-      accomps.push({name: "", id: "accomp"+id})
+      accomps.push({name: "", id: "accomp"+id});
       Ember.set(this.menu, "accomps", accomps);
       this.notifyPropertyChange('menu');
     },
@@ -38,7 +41,7 @@ export default Ember.Controller.extend({
     addAddition: function () {
       var addit = this.menu.additions;
       var id = this.menu.additions.length;
-      addit.push({name: "", id:  "addition"+id})
+      addit.push({name: "", id:  "addition"+id});
       Ember.set(this.menu, "additions", addit);
       this.notifyPropertyChange('menu');
     },
@@ -60,6 +63,23 @@ export default Ember.Controller.extend({
     this.set("deleteError", true);
     setTimeout(function() {
       that.set("deleteError", false);
-    }, 3000)
+    }, 3000);
+  },
+
+  clearController: function () {
+    var menu =  {
+      proteins: [{name: "", id:"protein0"}],
+      accomps: [{name: "", id:"accomp0"}],
+      additions: [{name: "", id:"addition0"}],
+      drink: null,
+      soup: null,
+      menuDate: null,
+    };
+    this.set("menu", menu);
+    this.set("addDrink", false);
+    this.set("addSoup", false);
+    this.set("deleteError", false);
+    this.set("isSaved", false);
+    this.set("showLoading", false);
   }
 });

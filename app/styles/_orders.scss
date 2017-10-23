@@ -1,0 +1,40 @@
+table.orders{
+  font-size: 16px;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0px 1px 3px rgba(144, 143, 143, 0.57);
+
+  ul {
+    margin: 0;
+  }
+
+  td, th{
+    padding: 5px;
+  }
+}
+
+.orders-container {
+  padding: 20px;
+}
+
+.empty-box {
+  margin: 0 auto;
+  width: 80%;
+  padding: 70px 0;
+  text-align: center;
+  background-color: #e0e0e0;
+  text-align: center;
+  border: 1px solid #c3c3c3;
+
+  span {
+    display: block;
+    color: gray;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  a{
+    color: #e91e63;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

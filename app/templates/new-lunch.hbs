@@ -1,7 +1,15 @@
+<div class="container">
+
+  <div class="page-title">
+    <img src="/assets/images/icons/multicolor/menu.svg" alt="">
+    <h4> Nuevo Menu </h4>
+  </div>
+  <div class="divider"></div>
+
 <form class="row">
   <div class="col s12 m4 form">
     <div class="icon">
-      <img src="/assets/images/icons/png/meat.png" alt="">
+      <img src="/assets/images/icons/multicolor/protein.svg" alt="">
       <h5> Proteinas </h5>
     </div>
 
@@ -14,8 +22,8 @@
         {{/each}}
 
         <div class="add">
-          <button type="button" name="button" {{action 'addProtein' }}> <i class="material-icons">add_circle_outline</i> </button>
-          <button type="button" name="button" {{action 'deleteLastItem' 'proteins'}}> <i class="material-icons">remove_circle_outline</i> </button>
+          <button class="add-button" type="button" name="button" {{action 'addProtein' }}> <i class="material-icons">add_circle_outline</i> </button>
+          <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'proteins'}}> <i class="material-icons">remove_circle_outline</i> </button>
         </div>
       </div>
     </div>
@@ -23,7 +31,7 @@
 
   <div class="col s12 m4 form">
     <div class="icon">
-      <img src="/assets/images/icons/png/salad.png" alt="">
+      <img src="/assets/images/icons/multicolor/salad.svg" alt="">
       <h5> Acompañamientos </h5>
     </div>
 
@@ -36,8 +44,8 @@
         {{/each}}
 
         <div class="add">
-          <button type="button" name="button" {{action "addAccomp"}}> <i class="material-icons">add_circle_outline</i> </button>
-          <button type="button" name="button" {{action 'deleteLastItem' 'accomps'}}> <i class="material-icons">remove_circle_outline</i> </button>
+          <button class="add-button" type="button" name="button" {{action "addAccomp"}}> <i class="material-icons">add_circle_outline</i> </button>
+          <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'accomps'}}> <i class="material-icons">remove_circle_outline</i> </button>
         </div>
       </div>
     </div>
@@ -45,7 +53,7 @@
 
   <div class="col s12 m4 form">
     <div class="icon">
-      <img src="/assets/images/icons/png/potatoes.png" alt="">
+      <img src="/assets/images/icons/multicolor/avocado.svg" alt="">
       <h5> Adicionales </h5>
     </div>
 
@@ -58,8 +66,8 @@
         {{/each}}
 
         <div class="add">
-          <button type="button" name="button" {{action "addAddition"}}> <i class="material-icons">add_circle_outline</i> </button>
-          <button type="button" name="button" {{action 'deleteLastItem' 'additions'}}> <i class="material-icons">remove_circle_outline</i> </button>
+          <button class="add-button" type="button" name="button" {{action "addAddition"}}> <i class="material-icons">add_circle_outline</i> </button>
+          <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'additions'}}> <i class="material-icons">remove_circle_outline</i> </button>
         </div>
       </div>
     </div>
@@ -68,7 +76,7 @@
 <form class="row">
   <div class="col s12 m4 form">
     <div class="col s12 icon">
-      <img src="/assets/images/icons/png/soup.png" alt="">
+      <img src="/assets/images/icons/multicolor/soup.svg" alt="">
       <h5> Sopa </h5>
     </div>
 
@@ -87,7 +95,7 @@
 
   <div class="col s12 m4 form">
     <div class="col s12 icon">
-      <img src="/assets/images/icons/png/soda.png" alt="">
+      <img src="/assets/images/icons/multicolor/drink.svg" alt="">
       <h5> Bebida </h5>
     </div>
 
@@ -104,11 +112,12 @@
     {{/if}}
   </div>
 </form>
-<div class="divider"></div>
-<button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveMenu"}}> Guardar
-    <i class="material-icons right">send</i>
-</button>
 
+<div class="right-align">
+  <button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveMenu"}}> Guardar
+      <i class="material-icons right">send</i>
+  </button>
+</div>
 
 {{#if deleteError}}
   <div class="alert">
@@ -119,5 +128,15 @@
 {{#if deleteError}}
   <div class="alert">
     Menu guardado exitosamente!
+  </div>
+{{/if}}
+</div>
+
+{{#if showLoading}}
+  <div class="modal-component preloader valign-wrapper">
+    <div class="spinner">
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
+    </div>
   </div>
 {{/if}}
