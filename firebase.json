@@ -1,9 +1,13 @@
 {
-  "hosting": {
-    "public": "app",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
+  "firebase": "foodzy-4542c",
+  "public": "./dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rewrites": [ {
+    "source": "**",
+    "destination": "/index.html"
+  } ]
 }

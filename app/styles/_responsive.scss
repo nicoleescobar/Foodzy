@@ -1,0 +1,59 @@
+@media all and (max-width: 1100px) {
+  .icon {
+    h5 { font-size: 21px; }
+    img { width: 40px;}
+  }
+
+  .container {
+    h3 {font-size: 31px;}
+  }
+}
+
+@media all and (max-width: 790px) {
+  .icon {
+    h5 {
+      font-size: 18px;
+      line-height: 1;
+      margin: 7px 0;
+    }
+    img { width: 30px; }
+  }
+
+  .container {
+    h4 {
+      font-size: 25px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .input-field { margin-top: 5px; }
+
+  .page-title img {
+    width: 32px;
+  }
+
+  .order-form .question {
+    padding: 10px;
+  }
+
+  .form {
+    margin-top: 15px;
+    padding: 0 0.20rem !important;
+  }
+}
+
+@media all and (max-width: 440px) {
+  div.header .logo a {
+    width: 49px;
+    padding: 5px;
+  }
+
+  div.header .nav ul.menu {
+    margin: 20px 0px 15px 0px;
+
+    li {
+      margin-left: 15px;
+    }
+  }
+}

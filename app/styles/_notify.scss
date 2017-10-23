@@ -1,0 +1,72 @@
+#notificationsTable {
+  th {
+    font-family: sans-serif;
+    font-weight: 300 !important;
+    padding: 5px 10px;
+  }
+
+  td {
+    padding: 8px 10px;
+    font-size: 16px;
+    line-height: 0;
+
+    button {
+      background-color: #d81b61;
+      border: 0;
+      border-radius: 4px;
+      padding: 2px 2px;
+    }
+
+    img {
+      width: 20px;
+    }
+  }
+
+  .username {
+    text-transform: capitalize;
+
+    span {
+      display: block;
+      padding: 10px 0px;
+    }
+  }
+
+  .icon-cell {
+    i {
+      padding-top: 5px;
+    }
+  }
+
+  .checks {
+    width: 50px;
+  }
+}
+
+.toolbar {
+  display: inline-block;
+  float: right;
+
+  .notifications-btn {
+    padding: 5px 12px;
+    font-size: 16px;
+    margin-top: 12px;
+    border: 0;
+    color: white;
+    border-radius: 5px;
+    background-color: #d81b60;
+
+    img {
+      width: 23px;
+      vertical-align: top;
+    }
+
+    span {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+
+.notifications.page-title {
+  display: inline-block;
+}

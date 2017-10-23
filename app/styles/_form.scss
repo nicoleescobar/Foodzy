@@ -1,6 +1,6 @@
 
 .form {
-  margin-bottom: 30px;
+  margin-top: 30px;
   padding: 10px 0px;
 
   .add  {
@@ -28,9 +28,36 @@
 .question {
   border: 1px solid #dcdada;
   border-radius: 6px;
-  padding: 20px;
+  padding: 10px 15px;
 
   [type="checkbox"]+label ,
   [type="radio"]+label{top:0}
 
+}
+
+
+.order-form {
+  .question {
+    padding: 15px 10px;
+    min-height: 100px;
+
+    p {
+      display: block;
+      margin: 5px 0;
+      label {
+        font-size: 16px;
+        text-transform: capitalize;
+        color: black;
+        top: 0;
+      }
+    }
+  }
+}
+
+.add-button:hover {
+  color: #4db6ac;
+}
+
+.remove-button:hover {
+  color: #d50000;
 }
