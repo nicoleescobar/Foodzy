@@ -13,6 +13,8 @@ export default Ember.Controller.extend({
   addSoup: false,
   deleteError: false,
   isSaved: false,
+  showLoading: false,
+  userList: null,
 
   actions: {
     enableOption: function (option, optionId) {
@@ -62,5 +64,22 @@ export default Ember.Controller.extend({
     setTimeout(function() {
       that.set("deleteError", false);
     }, 3000);
+  },
+
+  clearController: function () {
+    var menu =  {
+      proteins: [{name: "", id:"protein0"}],
+      accomps: [{name: "", id:"accomp0"}],
+      additions: [{name: "", id:"addition0"}],
+      drink: null,
+      soup: null,
+      menuDate: null,
+    };
+    this.set("menu", menu);
+    this.set("addDrink", false);
+    this.set("addSoup", false);
+    this.set("deleteError", false);
+    this.set("isSaved", false);
+    this.set("showLoading", false);
   }
 });

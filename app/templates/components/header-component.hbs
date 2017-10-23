@@ -1,34 +1,34 @@
 <div class="header">
   <div class="row">
     <div class="logo col s2 m2">
-      <a href="/"> <img src="/assets/images/icons/png/logo-white.png" alt=""> </a>
+      <a href="/"> <img src="/assets/images/icons/linear/logo-white.png" alt=""> </a>
     </div>
      <div class="nav col s10 m10">
        <ul class="menu">
          <li>
-           <a href="/" class="home-tab {{active-route 'home' activeRoute}}"> </a>
+           {{#link-to "home" class="home-tab" }} {{/link-to}}
            <span class="tooltip-text"> Inicio </span>
          </li>
 
          {{#if isAdminUser}}
          <li>
-           <a href="/new" class="newmenu-tab {{active-route 'new-lunch' activeRoute}}"> </a>
+           {{#link-to "new-lunch" class="newmenu-tab" }} {{/link-to}}
            <span class="tooltip-text"> +Menu </span>
          </li>
 
          <li>
-           <a href="/orders" class="orders-tab {{active-route 'orders' activeRoute}}"> </a>
+           {{#link-to "orders" class="orders-tab" }} {{/link-to}}
            <span class="tooltip-text"> Ordenes </span>
          </li>
 
          <li>
-           <a href="/notify" class="notifications-tab {{active-route 'notify' activeRoute}}"> </a>
+           {{#link-to "notify" class="notifications-tab" }} {{/link-to}}
            <span class="tooltip-text"> Notificar </span>
          </li>
          {{/if}}
 
          <li>
-           <a href="feedback" class="feedback-tab {{active-route 'feedback' activeRoute}}"> </a>
+           {{#link-to "feedback" class="feedback-tab" }} {{/link-to}}
            <span class="tooltip-text"> Feedback </span>
          </li>
 

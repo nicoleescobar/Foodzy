@@ -10,19 +10,17 @@ export default Ember.Route.extend({
 
   actions: {
     notifySingleUser: function (user) {
-      var service = this.get("notificationService");
-      var body =  {
-         "notification": {
-           "title": "Testing Notifications",
-           "body": "Aqui el body papuuuuuh",
-           "click_action": "http://localhost:4200"
-         },
+       this.sendNotification(user);
+    },
 
-         "to": user.userToken
-       };
-
-       var data = JSON.stringify(body);
-      service.sendSingleNotification(data);
+    notifyUnansweredUsers: function () {
+      var controller = this.controllerFor("notify");
+      for (var i = 0; i < controller.userList.length; i++) {
+        var user = controller.userList[i];
+        if (!user.responded) {
+          this.sendNotification(user);
+        }
+      }
     }
   },
 
@@ -31,7 +29,7 @@ export default Ember.Route.extend({
     firebase.database().ref('users').once('value', function(snapshot) {
       var users = snapshot.val();
       if (Ember.isPresent(users)) {
-        controller.set('userList', users.users)
+        controller.set('userList', users);
       } else {
         controller.set('userList', null);
       }
@@ -41,11 +39,28 @@ export default Ember.Route.extend({
   getOrders: function () {
     var controller = this.controllerFor("notify");
     var database = firebase.database();
-    database.ref('orders').once('value').then(function(snapshot) {
+    var orders = database.ref('orders');
+    orders.on('value', function(snapshot) {
       controller.set("orders", snapshot.val());
       controller.setupOrders();
       controller.loadUsersProfile();
     });
   },
+
+  sendNotification: function (user) {
+    var service = this.get("notificationService");
+    var body =  {
+       "notification": {
+         "title": "Hola " + user.username + "!",
+         "body": "Por favor, marca tu almuerzo.",
+         "click_action": "http://localhost:4200"
+       },
+
+       "to": user.userToken
+     };
+
+     var data = JSON.stringify(body);
+     service.sendSingleNotification(data);
+  }
 
 });

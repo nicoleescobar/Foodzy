@@ -46,11 +46,13 @@ export default Ember.Route.extend({
     var cont = 0;
     var menuSelected = null;
     var controller = this.controllerFor("home");
-    for (var prop in controller.ordersFilled) {
-      var mail = controller.ordersFilled[prop].user.email;
-      if (mail === controller.user.email) {
-        cont = cont + 1;
-        menuSelected = controller.ordersFilled[prop].order;
+    if (Ember.isPresent(controller.ordersFilled)) {
+      for (var i = 0;  i < controller.ordersFilled.length ; i++) {
+        var mail = controller.ordersFilled[i].user.email;
+        if (mail === controller.user.email) {
+          cont = cont + 1;
+          menuSelected = controller.ordersFilled[i].order;
+        }
       }
     }
     controller.set('showLoading', false);
@@ -61,9 +63,11 @@ export default Ember.Route.extend({
   getOrders: function () {
     var controller = this.controllerFor("home");
     var that = this;
-    firebase.database().ref('/orders').once('value').then(function(snapshot) {
+    var orders = firebase.database().ref('/orders')
+    orders.on('value', function(snapshot) {
       var orders = snapshot.val();
       controller.set('ordersFilled', orders);
+      controller.set('orderLastIndex', Ember.isPresent(orders) ? orders.length : 0 );
       that.checkIfOrder();
     });
   },
@@ -75,9 +79,7 @@ export default Ember.Route.extend({
     if (this.users) {
       var newUser = {username: user.displayName, email: user.email, uid: user.uid , userToken: controller.user.userToken};
       if (!that.userExist(newUser)) {
-        var users = this.get('users');
-        users.push(newUser);
-        firebase.database().ref('users').set({users});
+        firebase.database().ref('users/' + controller.userLastIndex).set(newUser);
       }
     } else {
       setTimeout(function(){ that.saveUser(user); }, 3000);
@@ -86,10 +88,13 @@ export default Ember.Route.extend({
 
   getUsers: function () {
     var that = this;
+    var controller = this.controllerFor("home");
+
     firebase.database().ref('users').once('value', function(snapshot) {
       var users = snapshot.val();
       if (Ember.isPresent(users)) {
-        that.set('users', users.users);
+        that.set('users', users);
+        controller.set("userLastIndex", users.length);
       } else {
         that.set('users', []);
       }

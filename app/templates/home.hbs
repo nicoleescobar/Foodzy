@@ -3,7 +3,7 @@
   <div class="orderHome">
     <h3 class="phrase"> Ya has ordenado! </h3>
 
-    <img class="orderImage" src="/assets/images/menuOrder.svg" alt="">
+    <img class="orderImage" src="/assets/images/icons/multicolor/menuOrder.svg" alt="">
     <div class="description">
       <span> Tu Orden Fue: </span> <br>
       <span> {{orderedLunch.protein}} con </span>
@@ -20,16 +20,16 @@
 
 {{else}}
   <div class="page-title">
-    <img src="/assets/images/orders.png" alt="">
+    <img src="/assets/images/icons/multicolor/menu.svg" alt="">
     <h4> Menu del Dia </h4>
   </div>
 
   <div class="divider"></div>
 
   <form class="row order-form">
-    <div class="col s12 m4 form">
+    <div class="col s12 m6 form">
       <div class="icon">
-        <img src="/assets/images/icons/png/meat.png" alt="">
+        <img src="/assets/images/icons/multicolor/protein.svg" alt="">
         <h5> Proteinas </h5>
       </div>
 
@@ -45,9 +45,9 @@
       </div>
     </div>
 
-    <div class="col s12 m4 form">
+    <div class="col s12 m6 form">
       <div class="icon">
-        <img src="/assets/images/icons/png/salad.png" alt="">
+        <img src="/assets/images/icons/multicolor/salad.svg" alt="">
         <h5> Acompañamientos </h5>
       </div>
 
@@ -63,9 +63,9 @@
       </div>
     </div>
 
-    <div class="col s12 m4 form">
+    <div class="col s12 m6 form">
       <div class="icon">
-        <img src="/assets/images/icons/png/potatoes.png" alt="">
+        <img src="/assets/images/icons/multicolor/avocado.svg" alt="">
         <h5> Adicionales </h5>
       </div>
 
@@ -80,44 +80,38 @@
         </div>
       </div>
     </div>
-  </form>
+    {{#if (or showSoup showDrink)}}
+      <div class="col s12 m6 form">
+        <div class="other-food-content">
+          {{#if showSoup}}
+          <div class="soup-container">
+            <div class="icon">
+              <img src="/assets/images/icons/multicolor/soup.svg" alt="">
+              <h5> Sopa de {{menu.soup}}</h5>
+            </div>
+            <div class="switch">
+              <label>  No <input id="soupCheck" type="checkbox"> <span class="lever"></span> Si </label>
+            </div>
+          </div>
+          {{/if}}
 
-  <form class="row">
-    {{#if showSoup}}
-      <div class="col s12 m4 form">
-        <div class="col s12 icon">
-          <img src="/assets/images/icons/png/soup.png" alt="">
-          <h5> Sopa de {{menu.soup}}</h5>
-        </div>
-
-        <div class="switch">
-          <label>
-            No
-            <input id="soupCheck" type="checkbox">
-            <span class="lever"></span>
-            Si
-          </label>
-        </div>
-      </div>
-    {{/if}}
-
-    {{#if showDrink}}
-      <div class="col s12 m4 form">
-        <div class="col s12 icon">
-          <img src="/assets/images/icons/png/soda.png" alt="">
-          <h5> {{menu.drink}} </h5>
-        </div>
-        <div class="switch" >
-          <label>
-            No
-            <input id="drinkCheck" type="checkbox">
-            <span class="lever"></span>
-            Si
-          </label>
+          {{#if showDrink}}
+            <div class="drink-container">
+              <div class="icon">
+                <img src="/assets/images/icons/multicolor/drink.svg" alt="">
+                <h5> {{menu.drink}} </h5>
+              </div>
+              <div class="switch">
+                  <label>  No <input id="drinkCheck" type="checkbox">  <span class="lever"></span> Si </label>
+              </div>
+            </div>
+          {{/if}}
         </div>
       </div>
     {{/if}}
   </form>
+
+
   <div class="right-align">
     <button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveOrder"}}> Enviar
         <i class="material-icons right">send</i>
@@ -139,7 +133,7 @@
 {{#if showDeniedNotifications}}
 <div class="modal-component valign-wrapper">
   <div class="modal-container valign-wrapper">
-    <img src="/assets/images/alarm.png" alt="">
+    <img src="/assets/images/alarm.svg" alt="">
     <p>
       Hola! <br>
       Foodzy quiere notificarte cuando el menu del dia este listo. <br>

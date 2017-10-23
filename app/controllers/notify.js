@@ -6,14 +6,12 @@ export default Ember.Controller.extend({
   userList: null,
 
   setupOrders : function functionName() {
-    var orders=[];
-    for (var key in this.orders) {
-      var order = this.orders[key];
+    for (var i = 0; i < this.orders.length; i++) {
+      var order = this.orders[i]
       var orderDate = new Date (order.date);
       var formatedDate = orderDate.getUTCDate() + '/' +  orderDate.getUTCMonth();
-      orders.push({user: order.user, date: formatedDate, order: order.order});
+      Ember.set(this.orders[i], "date", formatedDate);
     }
-    this.set('orders', orders);
   },
 
   loadUsersProfile: function () {

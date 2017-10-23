@@ -54,29 +54,34 @@ strong {
 
   img, h4, h5{
     display: inline-block;
-    vertical-align: top;
-    margin-top: 3px;
+    vertical-align: bottom;
+    margin: 0;
   }
 
-  h5 {
-    margin-top: 10px;
+  h5, h4 {
+    line-height: .9;
   }
 
   img{
-    width: 35px;
+    width: 40px;
+    margin-right: 10px;
   }
 }
 
-
-.icon {
-  img{
-    width: 50px;
+.form div.icon {
+  img, h5 {
+    display: inline-block;
+    vertical-align: bottom;
+    margin: 0;
   }
 
   h5 {
-    display: inline-block;
-    vertical-align: top;
-    margin-left: 5px;
+    line-height: .9;
+  }
+
+  img {
+    width: 30px;
+    margin-right: 10px;
   }
 }
 

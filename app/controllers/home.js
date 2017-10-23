@@ -19,6 +19,8 @@ export default Ember.Controller.extend({
   showLoading: true,
   showDeniedNotifications: false,
   orderedLunch: null,
+  orderLastIndex: 0,
+  userLastIndex: 0,
 
   actions: {
     closesDeniedNotifications: function () {
@@ -82,7 +84,7 @@ export default Ember.Controller.extend({
       order: this.order,
       date: new Date().toString(),
     };
-    firebase.database().ref('orders').push(order);
+    firebase.database().ref('orders/' + this.orderLastIndex).set(order);
   },
 
   cleanController: function () {

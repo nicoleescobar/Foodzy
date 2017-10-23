@@ -50,49 +50,46 @@
           width: 30px;
           height: 30px;
           background-size: contain;
+          transition: all linear .30s;
 
           &.home-tab {
-            background-image: url("/assets/images/icons/png/home.png");
+            background-image: url("/assets/images/icons/linear/home.svg");
             &:hover, &.active {
-              background-image: url("/assets/images/icons/png/filled-icons/home.png");
+              background-image: url("/assets/images/icons/multicolor/home.svg");
             }
           }
           &.newmenu-tab{
-            background-image: url("/assets/images/icons/png/newmenu.png");
+            background-image: url("/assets/images/icons/linear/newmenu.svg");
             &:hover, &.active {
-              background-image: url("/assets/images/icons/png/filled-icons/newmenu.png");
+              background-image: url("/assets/images/icons/multicolor/newmenu.svg");
             }
           }
           &.orders-tab{
-            background-image: url("/assets/images/icons/png/orders.png");
-            transition: all linear .50s;
+            background-image: url("/assets/images/icons/linear/orders.svg");
             &:hover, &.active {
-              background-image: url("/assets/images/icons/png/filled-icons/orders.png");
+              background-image: url("/assets/images/icons/multicolor/orders.svg");
             }
           }
           &.notifications-tab{
-            background-image: url("/assets/images/icons/png/team-white.png");
-            transition: all linear .50s;
+            background-image: url("/assets/images/icons/linear/team.svg");
             &:hover, &.active {
-              background-image: url("/assets/images/icons/png/filled-icons/team.png");
+              background-image: url("/assets/images/icons/multicolor/team.svg");
             }
           }
 
           &.feedback-tab{
-            background-image: url("/assets/images/icons/png/feedback.png");
-            transition: all linear .50s;
+            background-image: url("/assets/images/icons/linear/feedback.svg");
             &:hover, &.active {
-              background-image: url("/assets/images/icons/png/filled-icons/feedback.png");
+              background-image: url("/assets/images/icons/multicolor/feedback.svg");
             }
           }
 
           &.exit-btn{
-            background-image: url("/assets/images/icons/png/exit.png");
-            transition: all linear .50s;
+            background-image: url("/assets/images/icons/multicolor/arrow.svg");
             cursor: pointer;
 
             &:hover {
-              background-image: url("/assets/images/icons/png/filled-icons/exit.png");
+              background-image: url("/assets/images/icons/multicolor/exit.svg");
             }
           }
         }
@@ -101,6 +98,23 @@
   }
 }
 
+.other-food-content {
+  margin-top: 47px;
+  border: 1px solid #dcdada;
+  padding: 15px 20px 15px 10px;
+  border-radius: 7px;
+
+  .soup-container , .drink-container {
+    margin-bottom: 10px;
+    .switch, .icon {
+      display: inline-block;
+    }
+    .icon  { margin-right: 10px;}
+    .switch {
+      float: right;
+    }
+  }
+}
 
 .orderHome {
   h3 {

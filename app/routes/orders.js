@@ -8,7 +8,8 @@ export default Ember.Route.extend({
   loadOrders: function () {
     var controller = this.controllerFor("orders");
     var database = firebase.database();
-    database.ref('orders').once('value').then(function(snapshot) {
+    var orders = database.ref('orders');
+    orders.on('value', function(snapshot) {
       controller.set("orders", snapshot.val());
       controller.setupOrders();
     });
