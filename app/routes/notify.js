@@ -10,7 +10,7 @@ export default Ember.Route.extend({
 
   actions: {
     notifySingleUser: function (user) {
-       this.sendNotification(user);
+      this.sendNotification(user);
     },
 
     notifyUnansweredUsers: function () {
@@ -30,6 +30,7 @@ export default Ember.Route.extend({
       var users = snapshot.val();
       if (Ember.isPresent(users)) {
         controller.set('userList', users);
+        controller.loadUsersProfile();
       } else {
         controller.set('userList', null);
       }
@@ -43,7 +44,6 @@ export default Ember.Route.extend({
     orders.on('value', function(snapshot) {
       controller.set("orders", snapshot.val());
       controller.setupOrders();
-      controller.loadUsersProfile();
     });
   },
 
@@ -58,7 +58,6 @@ export default Ember.Route.extend({
 
        "to": user.userToken
      };
-
      var data = JSON.stringify(body);
      service.sendSingleNotification(data);
   }

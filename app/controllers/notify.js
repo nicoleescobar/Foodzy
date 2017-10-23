@@ -15,19 +15,23 @@ export default Ember.Controller.extend({
   },
 
   loadUsersProfile: function () {
-    for (var i = 0; i < this.userList.length; i++) {
-      this.userList[i].responded = this.userHasResponded(this.userList[i]);
-    }
-  },
-
-  userHasResponded: function (user) {
-    for (var i = 0; i < this.orders.length; i++) {
-      var order = this.orders[i];
-      if (order.user.email === user.email) {
-        return true;
+    if (Ember.isPresent(this.userList)) {
+      for (var i = 0; i < this.userList.length; i++) {
+        this.userList[i].responded = this.userHasResponded(this.userList[i]);
       }
     }
-    return false;
+  }.observes('orders', 'userList'),
+
+  userHasResponded: function (user) {
+    if (Ember.isPresent(this.orders)) {
+      for (var i = 0; i < this.orders.length; i++) {
+        var order = this.orders[i];
+        if (order.user.email === user.email) {
+          return true;
+        }
+      }
+      return false;
+    }
   }
 
 

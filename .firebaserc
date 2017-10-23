@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "foodzy-4542c"
+    "default": "foodzy-4542c",
+    "foodzy": "foodzy-4542c"
   }
 }
