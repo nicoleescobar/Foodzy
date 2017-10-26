@@ -3,8 +3,7 @@ html, body {
 }
 
 html body {
-  font-family: 'Neucha', cursive;
-  padding-bottom: 20px;
+  font-family: 'Pangolin', cursive;
   background-color: #f2f9ff;
   background-image: url(/assets/images/bg.png);
   background-blend-mode: overlay;
@@ -16,6 +15,7 @@ html body {
 
 .container {
   padding: 20px;
+  margin-bottom: 20px !important;
   background-color: #fff;
   border-radius: 20px;
   border: 1px solid #dcdada;
@@ -23,7 +23,7 @@ html body {
 }
 
 strong {
-  font-family: 'Handlee', cursive;
+  font-family: 'Pangolin', cursive;
   font-weight: 300 !important;
 }
 
@@ -60,6 +60,7 @@ strong {
 
   h5, h4 {
     line-height: .9;
+    font-family: 'Pacifico', cursive;
   }
 
   img{
@@ -77,6 +78,8 @@ strong {
 
   h5 {
     line-height: .9;
+    font-size: 23px;
+    font-family: 'Pangolin', cursive;
   }
 
   img {

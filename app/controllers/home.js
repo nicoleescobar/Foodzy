@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")),
   menu: [],
   order: {
     protein: null,
@@ -17,14 +17,13 @@ export default Ember.Controller.extend({
   hideMenu: true,
   ordersFilled: null,
   showLoading: true,
-  showDeniedNotifications: false,
+  showSelectFoodModal: false,
   orderedLunch: null,
   orderLastIndex: 0,
-  userLastIndex: 0,
 
   actions: {
-    closesDeniedNotifications: function () {
-      this.set('showDeniedNotifications', false);
+    closeModal: function () {
+      this.set('showSelectFoodModal', false);
     },
 
     saveOrder: function () {
@@ -32,7 +31,7 @@ export default Ember.Controller.extend({
       var drinkCheckbox = Ember.$("#drinkCheck").prop( "checked" );
       Ember.set(this.order, "drink", Ember.isPresent(drinkCheckbox) ? drinkCheckbox : false);
       Ember.set(this.order, "soup", Ember.isPresent(soupChecbox) ? soupChecbox : false);
-      this.deliverOrder();
+      this.validateOrder();
     },
 
     selectProtein: function(protein) {
@@ -52,7 +51,8 @@ export default Ember.Controller.extend({
 
     selectAddition: function(addition) {
       Ember.set(this.order, "addition", addition);
-    }
+    },
+
   },
 
   deleteFromAccomps: function ( index) {
@@ -87,8 +87,19 @@ export default Ember.Controller.extend({
     firebase.database().ref('orders/' + this.orderLastIndex).set(order);
   },
 
+  validateOrder: function () {
+    var orderIsEmpty = this.order.accomps.length === 0 &&
+                      !Ember.isPresent(this.order.addition) &&
+                      !Ember.isPresent(this.order.protein) &&
+                      !this.order.drink && !this.order.soup;
+    if (orderIsEmpty) {
+      this.set('showSelectFoodModal', true);
+    } else {
+      this.deliverOrder();
+    }
+  },
+
   cleanController: function () {
-    this.set('user', null);
     this.set('menu', []);
     this.set('showSoup', false);
     this.set('showDrink', false);
@@ -97,6 +108,6 @@ export default Ember.Controller.extend({
     this.set('hideMenu', true);
     this.set('ordersFilled', null);
     this.set('showLoading', true);
-    this.set('showDeniedNotifications', false);
+    this.set('showSelectFoodModal', false);
   }
 });

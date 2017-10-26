@@ -10,18 +10,29 @@ export default Ember.Route.extend({
   actions: {
     saveMenu: function () {
       var controller = this.controllerFor("new-lunch");
-      controller.set('showLoading', true);
       var date = new Date().toString();
       Ember.set(controller.menu, "menuDate", date);
-      //add Validation
-      var database = firebase.database();
-      database.ref('menu').set({
-        menu : controller.menu
-      });
-      database.ref('orders').set({});
-      this.showSaved();
-      this.notify();
+
+      if (this.validMenu(controller.menu)) {
+        controller.set('showLoading', true);
+        var database = firebase.database();
+        database.ref('menu').set({
+          menu : controller.menu
+        });
+        database.ref('orders').set({});
+        this.showSaved();
+        this.notify();
+      } else {
+        controller.showIncompleteMenu();
+      }
     }
+  },
+
+  validMenu: function (menu) {
+     var validMenu = Ember.isPresent(menu.accomps[0].name) &&
+                     Ember.isPresent(menu.addition[0].name) &&
+                     Ember.isPresent(menu.protein[0].name)
+     return validMenu;
   },
 
   showSaved: function () {
@@ -65,7 +76,6 @@ export default Ember.Route.extend({
 
        "to": user.userToken
      };
-
      var data = JSON.stringify(body);
      service.sendSingleNotification(data);
   }

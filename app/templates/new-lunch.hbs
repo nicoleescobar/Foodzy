@@ -1,137 +1,3 @@
-<div class="container">
-
-  <div class="page-title">
-    <img src="/assets/images/icons/multicolor/menu.svg" alt="">
-    <h4> Nuevo Menu </h4>
-  </div>
-  <div class="divider"></div>
-
-<form class="row">
-  <div class="col s12 m4 form">
-    <div class="icon">
-      <img src="/assets/images/icons/multicolor/protein.svg" alt="">
-      <h5> Proteinas </h5>
-    </div>
-
-    <div class="input-field">
-      <div class="question">
-        {{#each menu.proteins as |protein|}}
-          <p>
-            {{input class="validate" type="text" placeholder="Proteina" id=protein.id value=protein.name}}
-          </p>
-        {{/each}}
-
-        <div class="add">
-          <button class="add-button" type="button" name="button" {{action 'addProtein' }}> <i class="material-icons">add_circle_outline</i> </button>
-          <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'proteins'}}> <i class="material-icons">remove_circle_outline</i> </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col s12 m4 form">
-    <div class="icon">
-      <img src="/assets/images/icons/multicolor/salad.svg" alt="">
-      <h5> Acompañamientos </h5>
-    </div>
-
-    <div class="input-field">
-      <div class="question">
-        {{#each menu.accomps as |accomp|}}
-        <p>
-          {{input class="validate" type="text" placeholder="Acompañamiento" id=accomp.id value=accomp.name}}
-        </p>
-        {{/each}}
-
-        <div class="add">
-          <button class="add-button" type="button" name="button" {{action "addAccomp"}}> <i class="material-icons">add_circle_outline</i> </button>
-          <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'accomps'}}> <i class="material-icons">remove_circle_outline</i> </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col s12 m4 form">
-    <div class="icon">
-      <img src="/assets/images/icons/multicolor/avocado.svg" alt="">
-      <h5> Adicionales </h5>
-    </div>
-
-    <div class="input-field">
-      <div class="question">
-        {{#each menu.additions as |addition|}}
-        <p>
-          {{input class="validate" type="text" placeholder="Adicionales" id=addition.id value=addition.name}}
-        </p>
-        {{/each}}
-
-        <div class="add">
-          <button class="add-button" type="button" name="button" {{action "addAddition"}}> <i class="material-icons">add_circle_outline</i> </button>
-          <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'additions'}}> <i class="material-icons">remove_circle_outline</i> </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
-<form class="row">
-  <div class="col s12 m4 form">
-    <div class="col s12 icon">
-      <img src="/assets/images/icons/multicolor/soup.svg" alt="">
-      <h5> Sopa </h5>
-    </div>
-
-    <div class="switch" style="margin-left: 25px; margin-top: 65px;">
-      <label>
-        No
-        <input id="soupCheck" type="checkbox" onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
-        <span class="lever"></span>
-        Si
-      </label>
-    </div>
-    {{#if addSoup}}
-    <p class="descp-input"> {{input class="validate" type="text" placeholder="Sopa de ..." id="soupType" value=menu.soup}}</p>
-    {{/if}}
-  </div>
-
-  <div class="col s12 m4 form">
-    <div class="col s12 icon">
-      <img src="/assets/images/icons/multicolor/drink.svg" alt="">
-      <h5> Bebida </h5>
-    </div>
-
-    <div class="switch" style="margin-left: 25px; margin-top: 65px;">
-      <label>
-        No
-        <input id="drinkCheck" type="checkbox" onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
-        <span class="lever"></span>
-        Si
-      </label>
-    </div>
-    {{#if addDrink}}
-    <p class="descp-input">{{input class="validate" type="text" placeholder="Bebida de ..." id="drinkType" value=menu.drink}}</p>
-    {{/if}}
-  </div>
-</form>
-
-<div class="right-align">
-  <button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveMenu"}}> Guardar
-      <i class="material-icons right">send</i>
-  </button>
-</div>
-
-{{#if deleteError}}
-  <div class="alert">
-    Debes agregar al menos una opcion para cada componente de tu menu.
-  </div>
-{{/if}}
-
-{{#if deleteError}}
-  <div class="alert">
-    Menu guardado exitosamente!
-  </div>
-{{/if}}
-</div>
-
 {{#if showLoading}}
   <div class="modal-component preloader valign-wrapper">
     <div class="spinner">
@@ -139,4 +5,158 @@
       <div class="double-bounce2"></div>
     </div>
   </div>
+{{else}}
+  <div class="container">
+
+    <div class="page-title">
+      <img src="/assets/images/icons/multicolor/menu.svg" alt="">
+      <h4> Nuevo Menu </h4>
+    </div>
+    <div class="divider"></div>
+
+  <form class="row">
+    <div class="col s12 m4 form">
+      <div class="icon">
+        <img src="/assets/images/icons/multicolor/protein.svg" alt="">
+        <h5> Proteinas </h5>
+      </div>
+
+      <div class="input-field">
+        <div class="question">
+          {{#each menu.proteins as |protein|}}
+            <p>
+              {{input class="validate" type="text" placeholder="Proteina" id=protein.id value=protein.name}}
+            </p>
+          {{/each}}
+
+          <div class="add">
+            <button class="add-button" type="button" name="button" {{action 'addProtein' }}> <i class="material-icons">add_circle_outline</i> </button>
+            <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'proteins'}}> <i class="material-icons">remove_circle_outline</i> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4 form">
+      <div class="icon">
+        <img src="/assets/images/icons/multicolor/salad.svg" alt="">
+        <h5> Acompañamientos </h5>
+      </div>
+
+      <div class="input-field">
+        <div class="question">
+          {{#each menu.accomps as |accomp|}}
+          <p>
+            {{input class="validate" type="text" placeholder="Acompañamiento" id=accomp.id value=accomp.name}}
+          </p>
+          {{/each}}
+
+          <div class="add">
+            <button class="add-button" type="button" name="button" {{action "addAccomp"}}> <i class="material-icons">add_circle_outline</i> </button>
+            <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'accomps'}}> <i class="material-icons">remove_circle_outline</i> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4 form">
+      <div class="icon">
+        <img src="/assets/images/icons/multicolor/avocado.svg" alt="">
+        <h5> Adicionales </h5>
+      </div>
+
+      <div class="input-field">
+        <div class="question">
+          {{#each menu.additions as |addition|}}
+          <p>
+            {{input class="validate" type="text" placeholder="Adicionales" id=addition.id value=addition.name}}
+          </p>
+          {{/each}}
+
+          <div class="add">
+            <button class="add-button" type="button" name="button" {{action "addAddition"}}> <i class="material-icons">add_circle_outline</i> </button>
+            <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'additions'}}> <i class="material-icons">remove_circle_outline</i> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <form class="row">
+    <div class="col s12 m4 form">
+      <div class="col s12 icon">
+        <img src="/assets/images/icons/multicolor/soup.svg" alt="">
+        <h5> Sopa </h5>
+      </div>
+
+      <div class="switch" style="margin-left: 25px; margin-top: 65px;">
+        <label>
+          No
+          <input id="soupCheck" type="checkbox" onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
+          <span class="lever"></span>
+          Si
+        </label>
+      </div>
+      {{#if addSoup}}
+      <p class="descp-input"> {{input class="validate" type="text" placeholder="Sopa de ..." id="soupType" value=menu.soup}}</p>
+      {{/if}}
+    </div>
+
+    <div class="col s12 m4 form">
+      <div class="col s12 icon">
+        <img src="/assets/images/icons/multicolor/drink.svg" alt="">
+        <h5> Bebida </h5>
+      </div>
+
+      <div class="switch" style="margin-left: 25px; margin-top: 65px;">
+        <label>
+          No
+          <input id="drinkCheck" type="checkbox" onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
+          <span class="lever"></span>
+          Si
+        </label>
+      </div>
+      {{#if addDrink}}
+      <p class="descp-input">{{input class="validate" type="text" placeholder="Bebida de ..." id="drinkType" value=menu.drink}}</p>
+      {{/if}}
+    </div>
+  </form>
+
+  <div class="right-align">
+    <button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveMenu"}}> Guardar
+        <i class="material-icons right">send</i>
+    </button>
+  </div>
+
+  {{#if deleteError}}
+    <div class="alert">
+      Debes agregar al menos una opcion para cada componente de tu menu.
+    </div>
+  {{/if}}
+
+  {{#if addError}}
+    <div class="alert">
+      Por favor no dejes opciones vacias.
+    </div>
+  {{/if}}
+
+  </div>
+
+
+  {{#if menuIncomplete}}
+  <div class="modal-component valign-wrapper">
+    <div class="modal-container valign-wrapper menuIncomplete">
+      <div class="img errorIncompleteMenu"></div>
+      <p>
+        Hola! <br>
+        Parece que no has completado el menu del dia, recuerda que un plato o menu saludable se compone proteinas, grasas y carbohidratos. <br>
+        Por favor agrega mas alimentos.
+      </p>
+
+      <div class="close" {{action "closeModal"}}>
+        <i class="fa fa-times"></i>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
 {{/if}}

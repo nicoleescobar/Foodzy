@@ -49,3 +49,46 @@
 [info] 
 [info] Project Console: https://console.firebase.google.com/project/foodzy-4542c/overview
 [info] Hosting URL: https://foodzy-4542c.firebaseapp.com
+[debug] [2017-10-23T16:02:32.477Z] ----------------------------------------------------------------------
+[debug] [2017-10-23T16:02:32.482Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy --debug
+[debug] [2017-10-23T16:02:32.483Z] CLI Version:   3.13.1
+[debug] [2017-10-23T16:02:32.483Z] Platform:      darwin
+[debug] [2017-10-23T16:02:32.483Z] Node Version:  v8.5.0
+[debug] [2017-10-23T16:02:32.484Z] Time:          Mon Oct 23 2017 11:02:32 GMT-0500 (-05)
+[debug] [2017-10-23T16:02:32.484Z] ----------------------------------------------------------------------
+[debug] 
+[warn] ⚠  "firebase" key in firebase.json is deprecated. Run firebase use --add instead
+[warn] ⚠  Deprecation Warning: Firebase Hosting configuration should be moved under "hosting" key.
+[debug] [2017-10-23T16:02:32.498Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-23T16:02:32.498Z] > authorizing via signed-in user
+[debug] [2017-10-23T16:02:32.501Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/foodzy-4542c  
+ Mon Oct 23 2017 11:02:32 GMT-0500 (-05)
+[debug] [2017-10-23T16:02:33.269Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-23T16:02:33.271Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/foodzy-4542c/tokens  
+ Mon Oct 23 2017 11:02:33 GMT-0500 (-05)
+[debug] [2017-10-23T16:02:33.807Z] <<< HTTP RESPONSE 200
+[info] 1
+[info] 
+[info] === Deploying to 'foodzy-4542c'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing ./dist directory for upload...
+[debug] [2017-10-23T16:02:35.667Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/foodzy-4542c/uploads/-Kx8y9tXh2QdhPhWdU9k?fileCount=49&message=  
+ Mon Oct 23 2017 11:02:35 GMT-0500 (-05)
+[debug] [2017-10-23T16:02:41.898Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-23T16:02:41.899Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 49 files uploaded successfully
+[debug] [2017-10-23T16:02:42.816Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/foodzy-4542c/releases { hosting: 
+   { public: './dist',
+     rewrites: [ [Object] ],
+     ignore: [ 'firebase.json', '**/.*', '**/node_modules/**' ],
+     version: '-Kx8y9tXh2QdhPhWdU9k',
+     prefix: '-Kx8y9tXh2QdhPhWdU9k/',
+     manifest: [] } } 
+ Mon Oct 23 2017 11:02:42 GMT-0500 (-05)
+[debug] [2017-10-23T16:02:43.834Z] <<< HTTP RESPONSE 200
+[info] 
+[info] ✔  Deploy complete!
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/foodzy-4542c/overview
+[info] Hosting URL: https://foodzy-4542c.firebaseapp.com

@@ -12,11 +12,17 @@ export default Ember.Controller.extend({
   addDrink: false,
   addSoup: false,
   deleteError: false,
+  addError: false,
   isSaved: false,
   showLoading: false,
   userList: null,
+  menuIncomplete: false,
 
   actions: {
+    closeModal: function () {
+      this.set("menuIncomplete", false);
+    },
+
     enableOption: function (option, optionId) {
       var isEnabled = Ember.$('#'+optionId).prop( "checked" );
       this.set(option, isEnabled);
@@ -24,25 +30,37 @@ export default Ember.Controller.extend({
 
     addProtein: function () {
       var proteins = this.menu.proteins;
-      var id = this.menu.proteins.length - 1;
-      proteins.push({name: "", id: id});
-      Ember.set(this.menu, "proteins", proteins);
+      if (this.checkIfEmpty(proteins)) {
+        this.showAddError()
+      } else {
+        var id = this.menu.proteins.length - 1;
+        proteins.push({name: "", id: id});
+        Ember.set(this.menu, "proteins", proteins);
+      }
       this.notifyPropertyChange('menu');
     },
 
     addAccomp: function () {
       var accomps = this.menu.accomps;
-      var id = this.menu.accomps.length;
-      accomps.push({name: "", id: "accomp"+id});
-      Ember.set(this.menu, "accomps", accomps);
+      if (this.checkIfEmpty(accomps)) {
+        this.showAddError()
+      } else {
+        var id = this.menu.accomps.length;
+        accomps.push({name: "", id: "accomp"+id});
+        Ember.set(this.menu, "accomps", accomps);
+      }
       this.notifyPropertyChange('menu');
     },
 
     addAddition: function () {
       var addit = this.menu.additions;
-      var id = this.menu.additions.length;
-      addit.push({name: "", id:  "addition"+id});
-      Ember.set(this.menu, "additions", addit);
+      if (this.checkIfEmpty(addit)) {
+        this.showError("addError")
+      } else {
+        var id = this.menu.additions.length;
+        addit.push({name: "", id:  "addition"+id});
+        Ember.set(this.menu, "additions", addit);
+      }
       this.notifyPropertyChange('menu');
     },
 
@@ -50,20 +68,32 @@ export default Ember.Controller.extend({
       if (this.menu[prop].length > 1) {
         this.menu[prop].pop();
       } else {
-        this.showDeleteError();
+        this.showError("deleteError");
       }
       this.notifyPropertyChange('menu');
     },
-
-
   },
 
-  showDeleteError: function () {
+  checkIfEmpty: function (items) {
+    for (var i = 0; i < items.length; i++) {
+      if(items[i].name == ""){
+        return true;
+      }
+    }
+    return false;
+  },
+
+  showError: function (error) {
     var that = this;
-    this.set("deleteError", true);
+    this.set(error, true);
     setTimeout(function() {
-      that.set("deleteError", false);
+      that.set(error, false);
     }, 3000);
+  },
+
+  showIncompleteMenu: function () {
+    var that = this;
+    this.set("menuIncomplete", true);
   },
 
   clearController: function () {
@@ -79,7 +109,10 @@ export default Ember.Controller.extend({
     this.set("addDrink", false);
     this.set("addSoup", false);
     this.set("deleteError", false);
+    this.set("addError", false);
     this.set("isSaved", false);
     this.set("showLoading", false);
+    this.set("menuIncomplete", false);
+
   }
 });

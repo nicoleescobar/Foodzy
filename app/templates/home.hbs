@@ -130,20 +130,17 @@
 </div>
 {{/if}}
 
-{{#if showDeniedNotifications}}
+
+{{#if showSelectFoodModal}}
 <div class="modal-component valign-wrapper">
   <div class="modal-container valign-wrapper">
-    <img src="/assets/images/alarm.svg" alt="">
+    <div class="img errorImcompleteOrder"></div>
     <p>
       Hola! <br>
-      Foodzy quiere notificarte cuando el menu del dia este listo. <br>
-      Por favor activa las notificaciones en la configuracion de tu browser. <br>
-      <a href="https://support.google.com/chrome/answer/3220216?co=GENIE.Platform%3DDesktop&hl=es-419"> Chrome </a> ,
-      <a href="https://support.mozilla.org/es/kb/centro-de-control-administra-la-configuracion-de-privacidad-seguridad-pagina#w_permisos"> Firefox </a> o
-      <a href="https://support.apple.com/kb/PH21445?locale=en_US&viewlocale=ar_SA"> Safari </a>
+      Parece que no has seleccionado tu almuerzo del dia, recuerda que una buena alimentacion es la base de una vida saludable. <br>
     </p>
 
-    <div class="close" {{action "closesDeniedNotifications"}}>
+    <div class="close" {{action "closeModal"}}>
       <i class="fa fa-times"></i>
     </div>
   </div>

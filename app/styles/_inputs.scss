@@ -1,9 +1,4 @@
 html body {
-  font-family: 'Neucha', cursive;
-  padding-bottom: 20px;
-  background-color: #f2f9ff;
-  background-image: url(/assets/images/bg.png);
-  background-blend-mode: overlay;
 
   [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
     background-color: #29b6f6;

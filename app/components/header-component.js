@@ -4,9 +4,11 @@ export default Ember.Component.extend({
   isAdminUser: false,
   user: null,
   activeRoute: "/",
+  users: [],
+  userLastIndex: 0,
 
   didReceiveAttrs: function () {
-    this.checkAdminUsers();
+    this.getUsers();
     this.set('activeRoute', this.get('router.currentRouteName'));
   },
 
@@ -21,14 +23,56 @@ export default Ember.Component.extend({
     }
   },
 
-  checkAdminUsers: function () {
-    var admins;
+  getUsers: function () {
+    var that = this;
+    firebase.database().ref('users').once('value', function(snapshot) {
+      var users = snapshot.val();
+      if (Ember.isPresent(users)) {
+        that.checkUser();
+        that.set('users', users);
+        that.set("userLastIndex", users.length);
+      } else {
+        that.set('users', []);
+      }
+    });
+  },
+
+
+  checkUser: function () {
     var that = this;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-         that.set('user', user.providerData[0]);
+        localStorage.setItem('user', JSON.stringify(user.providerData[0]));
+        that.set("user", user.providerData[0]);
+        that.requestPermissionForNotifications(user.providerData[0]);
+        that.checkAdminUsers();
+
+      } else {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('https://www.googleapis.com/auth/plus.login');
+        firebase.auth().signInWithRedirect(provider);
       }
     });
+  },
+
+
+  saveUser: function (user) {
+    var that = this;
+    if (this.users) {
+      var newUser = {username: user.displayName, email: user.email, uid: user.uid , userToken: that.user.userToken};
+      if (!that.userExist(newUser)) {
+        console.log(newUser);
+        firebase.database().ref('users/' + that.userLastIndex).set(newUser);
+      }
+    } else {
+      setTimeout(function(){that.saveUser(user)}, 3000);
+    }
+  },
+
+  checkAdminUsers: function () {
+    var admins;
+    var that = this;
+
     firebase.database().ref('/adminsUsers').once('value').then(function(snapshot) {
       admins = snapshot.val();
       for (var i = 0; i < admins.length; i++) {
@@ -38,4 +82,40 @@ export default Ember.Component.extend({
       }
     });
   },
+
+  requestPermissionForNotifications: function (user) {
+    var that = this;
+    const messaging = firebase.messaging();
+    messaging.requestPermission()
+      .then(function() {
+        messaging.getToken()
+        .then(function(currentToken) {
+          if (currentToken) {
+            that.setUserToken(currentToken, user);
+          } else {
+            that.requestPermissionForNotifications();
+          }
+        });
+      })
+      .catch(function() {
+        alert("Hola! Foodzy quiere notificarte cuando el menu del dia este listo, por favor activa las notificaciones en la configuracion de tu browser. Gracias!");
+      });
+  },
+
+  setUserToken: function (token) {
+    Ember.set(this.user, "userToken", token);
+    this.saveUser(this.user);
+
+  },
+
+  userExist: function (user) {
+    for (var i = 0; i < this.users.length; i++) {
+      if (this.users[i].username === user.username ) {
+        return true;
+      }
+    }
+    return false;
+  },
+
+
 });

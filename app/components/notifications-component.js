@@ -21,6 +21,7 @@ export default Ember.Component.extend({
 
   setNotification: function (payload) {
     var that = this;
+    console.log("payload", payload);
     this.set("notification", payload.notification);
     this.set("showNotification", true);
 

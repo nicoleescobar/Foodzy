@@ -53,7 +53,7 @@ export default Ember.Route.extend({
        "notification": {
          "title": "Hola " + user.username + "!",
          "body": "Por favor, marca tu almuerzo.",
-         "click_action": "http://localhost:4200"
+         "click_action": "foodzy-4542c.firebaseapp.com"
        },
 
        "to": user.userToken
