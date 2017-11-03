@@ -29,6 +29,8 @@ export default Ember.Route.extend({
     var controller = this.controllerFor("home");
     if (Ember.isPresent(controller.ordersFilled)) {
       for (var i = 0;  i < controller.ordersFilled.length ; i++) {
+        console.log(controller.user, controller.ordersFilled[i]);
+
         var mail = controller.ordersFilled[i].user.email;
         if (mail === controller.user.email) {
           cont = cont + 1;

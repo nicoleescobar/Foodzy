@@ -42,7 +42,8 @@ export default Ember.Route.extend({
     var database = firebase.database();
     var orders = database.ref('orders');
     orders.on('value', function(snapshot) {
-      controller.set("orders", snapshot.val());
+      var orders = Ember.isPresent(snapshot.val()) ? snapshot.val() : [] ;
+      Ember.set(controller, "orders", snapshot.val());
       controller.setupOrders();
     });
   },
@@ -51,10 +52,10 @@ export default Ember.Route.extend({
     var service = this.get("notificationService");
     var body =  {
        "notification": {
-         "title": "Hola " + user.username + "!",
+         "title": "¡Hola " + user.username + "!",
          "body": "Por favor, marca tu almuerzo.",
-         "click_action": "foodzy-4542c.firebaseapp.com",
-         "icon": "/assets/images/animations/bellcut.gif"
+         "click_action": "https://foodzy-4542c.firebaseapp.com/",
+         "icon": "../assets/images/animations/waiter.png",
        },
 
        "to": user.userToken

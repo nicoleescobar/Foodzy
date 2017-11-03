@@ -6,18 +6,20 @@ export default Ember.Controller.extend({
   userList: null,
 
   setupOrders : function functionName() {
-    for (var i = 0; i < this.orders.length; i++) {
-      var order = this.orders[i]
-      var orderDate = new Date (order.date);
-      var formatedDate = orderDate.getUTCDate() + '/' +  orderDate.getUTCMonth();
-      Ember.set(this.orders[i], "date", formatedDate);
+    if (Ember.isPresent(this.orders)) {
+      for (var i = 0; i < this.orders.length; i++) {
+        var order = this.orders[i]
+        var orderDate = new Date (order.date);
+        var formatedDate = orderDate.getUTCDate() + '/' +  orderDate.getUTCMonth();
+        Ember.set(this.orders[i], "date", formatedDate);
+      }
     }
   },
 
   loadUsersProfile: function () {
     if (Ember.isPresent(this.userList)) {
       for (var i = 0; i < this.userList.length; i++) {
-        this.userList[i].responded = this.userHasResponded(this.userList[i]);
+        Ember.set(this.userList[i], "responded" ,this.userHasResponded(this.userList[i]));
       }
     }
   }.observes('orders', 'userList'),
