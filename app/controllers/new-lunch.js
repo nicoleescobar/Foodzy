@@ -17,6 +17,8 @@ export default Ember.Controller.extend({
   showLoading: false,
   userList: null,
   menuIncomplete: false,
+  addSoupError: false,
+  addDrinkError: false,
 
   actions: {
     closeModal: function () {
@@ -92,8 +94,9 @@ export default Ember.Controller.extend({
   },
 
   showIncompleteMenu: function () {
-    var that = this;
-    this.set("menuIncomplete", true);
+    if (!this.addSoupError || !this.addDrinkError) {
+      this.set("menuIncomplete", true);
+    }
   },
 
   clearController: function () {
@@ -110,6 +113,8 @@ export default Ember.Controller.extend({
     this.set("addSoup", false);
     this.set("deleteError", false);
     this.set("addError", false);
+    this.set("addSoupError", false);
+    this.set("addDrinkError", false);
     this.set("isSaved", false);
     this.set("showLoading", false);
     this.set("menuIncomplete", false);

@@ -29,10 +29,26 @@ export default Ember.Route.extend({
   },
 
   validMenu: function (menu) {
+    var controller = this.controllerFor("new-lunch");
      var validMenu = Ember.isPresent(menu.accomps[0].name) &&
-                     Ember.isPresent(menu.addition[0].name) &&
-                     Ember.isPresent(menu.protein[0].name)
-     return validMenu;
+                     Ember.isPresent(menu.additions[0].name) &&
+                     Ember.isPresent(menu.proteins[0].name);
+
+    if (controller.addSoup || controller.addDrink) {
+      if (Ember.isEmpty(menu.soup)) {
+        controller.showError("addSoupError");
+      }
+
+      if (Ember.isEmpty(menu.drink)) {
+        controller.showError("addDrinkError");
+      }
+
+      if (Ember.isPresent(menu.drink) && Ember.isPresent(menu.soup)) {
+        return validMenu;
+      }
+    } else {
+      return validMenu;
+    }
   },
 
   showSaved: function () {
@@ -51,12 +67,13 @@ export default Ember.Route.extend({
     var users = firebase.database().ref('users');
     users.on('value', function(snapshot) {
       var users = snapshot.val();
-      controller.set('userList', users.users);
+      controller.set('userList', users);
     });
   },
 
   notify: function () {
     var controller = this.controllerFor("new-lunch");
+    console.log(controller.userList);
     for (var i = 0; i < controller.userList.length; i++) {
       var user = controller.userList[i];
       if (!user.responded) {
@@ -71,7 +88,7 @@ export default Ember.Route.extend({
        "notification": {
          "title": "Hola " + user.username + "!",
          "body": "Por favor, marca tu almuerzo.",
-         "click_action": "http://localhost:4200"
+         "click_action": "https://foodzy-4542c.firebaseapp.com"
        },
 
        "to": user.userToken
