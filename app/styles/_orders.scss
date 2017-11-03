@@ -16,6 +16,10 @@ table.orders{
   padding: 20px;
   text-transform: capitalize;
 
+  .table-wraper {
+    width: 100%;
+    overflow-x: scroll;
+  }
 }
 
 .empty-box {

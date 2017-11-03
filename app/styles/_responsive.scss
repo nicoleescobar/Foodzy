@@ -20,19 +20,16 @@
   }
 
   .container {
-    h4 {
+    .page-title h4 {
       font-size: 25px;
-      margin-top: 10px;
+      margin-top: 12px;
       margin-bottom: 0;
+      vertical-align: top;
     }
   }
 
   .input-field { margin-top: 5px; }
-
-  .page-title img {
-    width: 32px;
-  }
-
+  
   .order-form .question {
     padding: 10px;
   }

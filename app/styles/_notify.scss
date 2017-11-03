@@ -4,9 +4,7 @@
   }
 
   td {
-    padding: 8px 10px;
     font-size: 16px;
-    line-height: 0;
 
     button {
       background-color: #d81b61;
@@ -18,15 +16,14 @@
     img {
       width: 20px;
     }
+
+    &:last-child  {
+      text-align: center;
+    }
   }
 
   .username {
     text-transform: capitalize;
-
-    span {
-      display: block;
-      padding: 10px 0px;
-    }
   }
 
   .icon-cell {
@@ -47,7 +44,7 @@
   .notifications-btn {
     padding: 5px 12px;
     font-size: 16px;
-    margin-top: 12px;
+    margin: 12px 0;
     border: 0;
     color: white;
     border-radius: 5px;

@@ -3,6 +3,7 @@ html, body {
 }
 
 html body {
+  min-width: 530px;
   font-family: 'Pangolin', cursive;
   background-color: #f2f9ff;
   background-image: url(/assets/images/bg.png);
@@ -14,6 +15,7 @@ html body {
 }
 
 .container {
+  min-width: 500px;
   padding: 20px;
   margin-bottom: 20px !important;
   background-color: #fff;
