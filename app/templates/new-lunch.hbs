@@ -93,7 +93,7 @@
           </label>
         </div>
       </div>
-    
+
       {{#if addSoup}}
       <p class="descp-input"> {{input class="validate" type="text" placeholder="Sopa de ..." id="soupType" value=menu.soup}}</p>
       {{/if}}
@@ -121,9 +121,7 @@
   </form>
 
   <div class="right-align">
-    <button class="btn waves-effect waves-light   cyan" type="submit" name="action" {{action "saveMenu"}}> Guardar
-        <i class="material-icons right">send</i>
-    </button>
+    <button class="btn waves-effect waves-light   cyan" type="submit" name="action" {{action "saveMenu"}}> Guardar </button>
   </div>
 
   {{#if deleteError}}
