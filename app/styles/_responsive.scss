@@ -29,7 +29,7 @@
   }
 
   .input-field { margin-top: 5px; }
-  
+
   .order-form .question {
     padding: 10px;
   }
@@ -40,17 +40,43 @@
   }
 }
 
-@media all and (max-width: 440px) {
-  div.header .logo a {
-    width: 49px;
-    padding: 5px;
-  }
-
-  div.header .nav ul.menu {
-    margin: 20px 0px 15px 0px;
-
-    li {
-      margin-left: 15px;
+@media all and (max-width: 700px) {
+  .form div.icon {
+    h5 {
+      font-size: 18px;
+      line-height: 1;
+      margin: 0;
     }
   }
+
+}
+
+@media all and (max-width: 600px) {
+ .header div.nav {
+   padding: 0;
+   background-color: #2aacc1;
+
+   ul.menu {
+     width: 100%;
+     margin: 0;
+
+     li {
+       display: block;
+       width: 100%;
+       position: none;
+       margin: 0;
+
+       a{
+         display: block;
+         padding: 5px 0 ;
+         text-align: center;
+
+         &:hover {
+           background-color: #00bcd4;
+         }
+       }
+     }
+   }
+ }
+
 }

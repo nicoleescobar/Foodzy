@@ -1,13 +1,13 @@
 <div class="orders-container container">
 <div class="page-title">
-  <img src="/assets/images/icons/multicolor/orders.svg" alt="">
+  <img src="/assets/images/icons/multicolor/menu.svg" alt="">
   <h4> Ordenes </h4>
 </div>
 
 {{#if notOrdersYet}}
   <div class="empty-box">
     <span> No hay ordenes disponibles aun. </span>
-    <a href="/notify"> Notificar al equipo </a>
+    {{#link-to "notify" }} Notificar al equipo {{/link-to}}
   </div>
 {{else}}
 <div class="table-wraper">

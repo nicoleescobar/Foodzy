@@ -1,43 +1,46 @@
-<div class="header">
+<div class="header cyan">
   <div class="row">
     <div class="logo col s2 m2">
       <a href="/"> <img src="/assets/images/icons/linear/logo-white.png" alt=""> </a>
     </div>
-     <div class="nav col s10 m10">
-       <ul class="menu">
-         <li>
-           {{#link-to "home" class="home-tab" }} {{/link-to}}
-           <span class="tooltip-text"> Inicio </span>
-         </li>
+      {{#if showMenuToggler}}
+        {{#if isOpen}}
+          <span class="toggler" {{action "closeMenu"}}><i class="material-icons">close</i></span>
+        {{else}}
+          <span class="toggler" {{action "openMenu"}}><i class="material-icons">more_vert</i></span>
+        {{/if}}
+      {{/if}}
+      {{#if isOpen}}
+         <div class="nav col s12 m10">
+           <ul class="menu">
+             <li>
+               {{#link-to "home"}}Inicio {{/link-to}}
+             </li>
 
-         {{#if isAdminUser}}
-         <li>
-           {{#link-to "new-lunch" class="newmenu-tab" }} {{/link-to}}
-           <span class="tooltip-text"> +Menu </span>
-         </li>
+             {{#if isAdminUser}}
+               <li>
+                 {{#link-to "new-lunch"}} +Menu {{/link-to}}
+               </li>
 
-         <li>
-           {{#link-to "orders" class="orders-tab" }} {{/link-to}}
-           <span class="tooltip-text"> Ordenes </span>
-         </li>
+               <li>
+                 {{#link-to "orders"}} Ordenes {{/link-to}}
 
-         <li>
-           {{#link-to "notify" class="notifications-tab" }} {{/link-to}}
-           <span class="tooltip-text"> Notificar </span>
-         </li>
-         {{/if}}
+               </li>
 
-         <li>
-           {{#link-to "feedback" class="feedback-tab" }} {{/link-to}}
-           <span class="tooltip-text"> Feedback </span>
-         </li>
+               <li>
+                 {{#link-to "notify"}} Notificar {{/link-to}}
+               </li>
+             {{/if}}
 
-         <li>
-           <a class="exit-btn" {{action "logOut"}}> </a>
-           <span class="tooltip-text"> Salir </span>
-         </li>
+             <li>
+               {{#link-to "feedback"}} Feedback {{/link-to}}
+             </li>
 
-       </ul>
-     </div>
+             <li>
+               <a class="exit-btn" {{action "logOut"}}> Salir </a>
+             </li>
+           </ul>
+         </div>
+      {{/if}}
   </div>
 </div>

@@ -3,8 +3,9 @@ html, body {
 }
 
 html body {
-  min-width: 530px;
-  font-family: 'Pangolin', cursive;
+  min-width: 400px;
+  font-size: 14px;
+  font-family: 'Catamaran', cursive;
   background-color: #f2f9ff;
   background-image: url(/assets/images/bg.png);
   background-blend-mode: overlay;
@@ -15,7 +16,6 @@ html body {
 }
 
 .container {
-  min-width: 500px;
   padding: 20px;
   margin-bottom: 20px !important;
   background-color: #fff;
@@ -25,13 +25,13 @@ html body {
 }
 
 strong {
-  font-family: 'Pangolin', cursive;
+  font-family: 'Catamaran', cursive;
   font-weight: 300 !important;
 }
 
 .phrase-container {
    text-align: right;
-   color: #ec407a;
+   color: #26c6da;
 }
 
 .phrase {
@@ -81,7 +81,7 @@ strong {
   h5 {
     line-height: .9;
     font-size: 23px;
-    font-family: 'Pangolin', cursive;
+    font-family: 'Catamaran', cursive;
   }
 
   img {

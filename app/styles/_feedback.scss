@@ -1,26 +1,17 @@
 .feedback{
-  .phrase{
-    font-size: 40px;
-    display: inline-block;
-    color: #ec407a;
-    margin-top: 0;
-    margin-bottom: 0px;
+
+  .divider {
+    margin: 18px 0;
   }
 
   p {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   a.btn {
     float: right;
     margin-right: 5%;
     margin-top: 20px;
-  }
-
-  img {
-    width: 50px;
-    display: inline-block;
-    vertical-align: top;
   }
 
   .title {
@@ -33,7 +24,7 @@
     width: 90%;
     margin: 0 auto;
     padding: 5px;
-    border: 2px #d81b60 dashed;
+    border: 2px #26c6da dashed;
     min-height: 150px;
   }
 }

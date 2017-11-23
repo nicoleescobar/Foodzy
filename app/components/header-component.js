@@ -6,10 +6,21 @@ export default Ember.Component.extend({
   activeRoute: "/",
   users: [],
   userLastIndex: 0,
+  isOpen: true,
+  showMenuToggler: false,
 
   didReceiveAttrs: function () {
+    var that = this;
     this.getUsers();
     this.set('activeRoute', this.get('router.currentRouteName'));
+
+    that.set("isOpen", Ember.$( window ).width() > 600);
+    that.set("showMenuToggler", Ember.$( window ).width() <= 600);
+
+    Ember.$( window ).resize(function() {
+        that.set("isOpen", Ember.$( window ).width() > 600);
+        that.set("showMenuToggler", Ember.$( window ).width() <= 600);
+    });
   },
 
   actions: {
@@ -20,7 +31,15 @@ export default Ember.Component.extend({
       }, function(error) {
         console.log("Error", error);
       });
-    }
+    },
+
+    openMenu: function () {
+      this.set("isOpen", true)
+    },
+
+    closeMenu: function () {
+      this.set("isOpen", false)
+    },
   },
 
   getUsers: function () {

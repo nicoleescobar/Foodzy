@@ -1,20 +1,25 @@
 #notificationsTable {
   th {
     padding: 5px 10px;
+
+    &:last-child  {
+      text-align: center;
+    }
   }
 
   td {
     font-size: 16px;
 
     button {
-      background-color: #d81b61;
       border: 0;
       border-radius: 4px;
-      padding: 2px 2px;
+      padding: 3px 5px;
+      font-size: 14px;
+      color: white;
     }
 
     img {
-      width: 20px;
+      width: 30px;
     }
 
     &:last-child  {
@@ -38,7 +43,6 @@
 }
 
 .toolbar {
-  display: inline-block;
   float: right;
 
   .notifications-btn {
@@ -48,7 +52,6 @@
     border: 0;
     color: white;
     border-radius: 5px;
-    background-color: #d81b60;
 
     img {
       width: 23px;

@@ -17,7 +17,6 @@
   <form class="row">
     <div class="col s12 m4 form">
       <div class="icon">
-        <img src="/assets/images/icons/multicolor/protein.svg" alt="">
         <h5> Proteinas </h5>
       </div>
 
@@ -39,7 +38,6 @@
 
     <div class="col s12 m4 form">
       <div class="icon">
-        <img src="/assets/images/icons/multicolor/salad.svg" alt="">
         <h5> Acompañamientos </h5>
       </div>
 
@@ -61,7 +59,6 @@
 
     <div class="col s12 m4 form">
       <div class="icon">
-        <img src="/assets/images/icons/multicolor/avocado.svg" alt="">
         <h5> Adicionales </h5>
       </div>
 
@@ -84,18 +81,19 @@
   <form class="row">
     <div class="col s12 m4 form">
       <div class="col s12 icon">
-        <img src="/assets/images/icons/multicolor/soup.svg" alt="">
         <h5> Sopa </h5>
       </div>
-
-      <div class="switch" style="margin-left: 25px; margin-top: 65px;">
-        <label>
-          No
-          <input id="soupCheck" type="checkbox" onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
-          <span class="lever"></span>
-          Si
-        </label>
+      <div class="switch-container">
+        <div class="switch">
+          <label>
+            No
+            <input id="soupCheck" type="checkbox" onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
+            <span class="lever"></span>
+            Si
+          </label>
+        </div>
       </div>
+    
       {{#if addSoup}}
       <p class="descp-input"> {{input class="validate" type="text" placeholder="Sopa de ..." id="soupType" value=menu.soup}}</p>
       {{/if}}
@@ -103,18 +101,19 @@
 
     <div class="col s12 m4 form">
       <div class="col s12 icon">
-        <img src="/assets/images/icons/multicolor/drink.svg" alt="">
         <h5> Bebida </h5>
       </div>
-
-      <div class="switch" style="margin-left: 25px; margin-top: 65px;">
-        <label>
-          No
-          <input id="drinkCheck" type="checkbox" onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
-          <span class="lever"></span>
-          Si
-        </label>
+      <div class="switch-container">
+        <div class="switch">
+          <label>
+            No
+            <input id="drinkCheck" type="checkbox" onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
+            <span class="lever"></span>
+            Si
+          </label>
+        </div>
       </div>
+
       {{#if addDrink}}
       <p class="descp-input">{{input class="validate" type="text" placeholder="Bebida de ..." id="drinkType" value=menu.drink}}</p>
       {{/if}}
@@ -122,7 +121,7 @@
   </form>
 
   <div class="right-align">
-    <button class="btn waves-effect waves-light pink lighten-1" type="submit" name="action" {{action "saveMenu"}}> Guardar
+    <button class="btn waves-effect waves-light   cyan" type="submit" name="action" {{action "saveMenu"}}> Guardar
         <i class="material-icons right">send</i>
     </button>
   </div>
