@@ -1,117 +1,136 @@
 <div class="container">
-{{#if hideMenu}}
-  <div class="orderHome">
-    <h3 class="phrase"> Ya has ordenado! </h3>
+  {{#if noMenuToday}}
 
-    <img class="orderImage" src="/assets/images/icons/multicolor/menuOrder.svg" alt="">
-    <div class="description">
-      <span> Tu Orden Fue: </span> <br>
-      <span> {{orderedLunch.protein}} con </span>
-      <span> {{#each orderedLunch.accomps as |accomp|}} {{accomp}}, {{/each}} </span>
-      <span> adicionaste {{orderedLunch.addition}}</span>
-      {{#if orderedLunch.soup}} <span> con Sopas </span> {{/if}}
-      {{#if orderedLunch.drink}} <span> y Jugo </span> {{/if}}
-      <br>
-      <span> Buen Provecho! </span>
-    </div>
-
-    <a href="/feedback" class="feedback-link"> Tienes propuestas, dudas o comentarios que nos ayuden a mejorar? </a>
-  </div>
-
-{{else}}
-  <div class="page-title">
-    <img src="/assets/images/icons/multicolor/menu.svg" alt="">
-    <h4> Menu del Dia </h4>
-  </div>
-
-  <div class="divider"></div>
-
-  <form class="row order-form">
-    <div class="col s12 m6 form">
-      <div class="icon">
-        <h5> Proteinas </h5>
+    <div class="noMenu">
+      <img src="/assets/images/icons/linear/chef.svg" alt="">
+      <div class="description">
+        <h3 class="phrase"> Oh... Aun no tenemos el menu de hoy!</h3>
+        <span> Seras notificado cuando el menu este listo, por favor espera unos minutos.</span>
       </div>
 
-      <div class="input-field">
-        <div class="question">
-          {{#each menu.proteins as |protein|}}
-            <p>
-              <input type="radio" name="protein" id={{protein.id}} onchange={{action "selectProtein" protein.name}} />
-              <label for={{protein.id}}>{{protein.name}}</label>
-            </p>
-          {{/each}}
+    </div>
+
+  {{else}}
+    {{#if hideMenu}}
+      <div class="orderHome">
+        <img src="/assets/images/icons/linear/pizza.svg" alt="">
+
+        <div class="description">
+          <h3 class="phrase"> Es todo por hoy, ya has ordenado! </h3>
+
+          <span> Tu Orden Fue: </span> <br>
+          <span> {{orderedLunch.protein}} con </span>
+          <span> {{#each orderedLunch.accomps as |accomp|}} {{accomp}}, {{/each}} </span>
+          <span> adicionaste {{orderedLunch.addition}}</span>
+          {{#if orderedLunch.soup}} <span> con Sopas </span> {{/if}}
+          {{#if orderedLunch.drink}} <span> y {{menu.drink}} </span> {{/if}}
+          <br>
+          <span> Buen Provecho! </span>
         </div>
-      </div>
-    </div>
 
-    <div class="col s12 m6 form">
-      <div class="icon">
-        <h5> Acompañamientos </h5>
       </div>
 
-      <div class="input-field">
-        <div class="question">
-          {{#each menu.accomps as |accomp index|}}
-            <p>
-              <input type="checkbox" id={{accomp.id}} onchange={{action "selectAccomp" accomp index}}/>
-              <label for={{accomp.id}}>{{accomp.name}}</label>
-            </p>
-          {{/each}}
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m6 form">
-      <div class="icon">
-        <h5> Adicionales </h5>
+    {{else}}
+      <div class="page-title">
+        <h4> Menu del Dia </h4>
       </div>
 
-      <div class="input-field">
-        <div class="question">
-          {{#each menu.additions as |addition index|}}
-            <p>
-              <input type="radio" name="addition" id={{addition.id}} onchange={{action "selectAddition" addition.name}}/>
-              <label for={{addition.id}}>{{addition.name}}</label>
-            </p>
-          {{/each}}
-        </div>
-      </div>
-    </div>
-    {{#if (or showSoup showDrink)}}
-      <div class="col s12 m6 form">
-        <div class="other-food-content">
-          {{#if showSoup}}
-          <div class="soup-container">
+      <div class="divider"></div>
+
+      <form class="row order-form">
+        <div class="col s12 m6">
+          <div class="form">
             <div class="icon">
-              <h5> Sopa de {{menu.soup}}</h5>
+              <h5> Proteinas </h5>
             </div>
-            <div class="switch">
-              <label>  No <input id="soupCheck" type="checkbox"> <span class="lever"></span> Si </label>
+
+            <div class="input-field">
+              <div class="question">
+                {{#each menu.proteins as |protein|}}
+                  <p>
+                    <input type="radio" name="protein" id={{protein.id}} onchange={{action "selectProtein" protein.name}} />
+                    <label for={{protein.id}}>{{protein.name}}</label>
+                  </p>
+                {{/each}}
+              </div>
             </div>
           </div>
-          {{/if}}
+        </div>
 
-          {{#if showDrink}}
-            <div class="drink-container">
-              <div class="icon">
-                <h5> {{menu.drink}} </h5>
-              </div>
-              <div class="switch">
-                  <label>  No <input id="drinkCheck" type="checkbox">  <span class="lever"></span> Si </label>
+        <div class="col s12 m6">
+          <div class="form">
+            <div class="icon">
+              <h5> Acompañamientos </h5>
+            </div>
+
+            <div class="input-field">
+              <div class="question">
+                {{#each menu.accomps as |accomp index|}}
+                  <p>
+                    <input type="checkbox" id={{accomp.id}} onchange={{action "selectAccomp" accomp index}}/>
+                    <label for={{accomp.id}}>{{accomp.name}}</label>
+                  </p>
+                {{/each}}
               </div>
             </div>
-          {{/if}}
+          </div>
         </div>
+
+        <div class="col s12 m6">
+          <div class="form">
+            <div class="icon">
+              <h5> Adicionales </h5>
+            </div>
+
+            <div class="input-field">
+              <div class="question">
+                {{#each menu.additions as |addition index|}}
+                  <p>
+                    <input type="radio" name="addition" id={{addition.id}} onchange={{action "selectAddition" addition.name}}/>
+                    <label for={{addition.id}}>{{addition.name}}</label>
+                  </p>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+
+        </div>
+        {{#if (or showSoup showDrink)}}
+          <div class="col s12 m6 ">
+            <div class="other-food-content">
+              {{#if showSoup}}
+              <div class="soup-container">
+                <div class="icon">
+                  <h6> Sopa de {{menu.soup}}</h6>
+                </div>
+                <div class="switch">
+                  <label>  No <input id="soupCheck" type="checkbox"> <span class="lever"></span> Si </label>
+                </div>
+              </div>
+              {{/if}}
+
+              {{#if showDrink}}
+                <div class="drink-container">
+                  <div class="icon">
+                    <h6> {{menu.drink}} </h6>
+                  </div>
+                  <div class="switch">
+                      <label>  No <input id="drinkCheck" type="checkbox">  <span class="lever"></span> Si </label>
+                  </div>
+                </div>
+              {{/if}}
+            </div>
+          </div>
+        {{/if}}
+      </form>
+
+      <div class="divider"></div>
+
+      <div class="right-align">
+        <button class="btn waves-effect waves-light   cyan" type="submit" name="action" {{action "saveOrder"}}> Enviar </button>
       </div>
     {{/if}}
-  </form>
-
-
-  <div class="right-align">
-    <button class="btn waves-effect waves-light   cyan" type="submit" name="action" {{action "saveOrder"}}> Enviar </button>
-  </div>
-{{/if}}
-
+  {{/if}}
 </div>
 
 {{#if showLoading}}

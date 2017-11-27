@@ -80,7 +80,6 @@ export default Ember.Component.extend({
     if (this.users) {
       var newUser = {username: user.displayName, email: user.email, uid: user.uid , userToken: that.user.userToken};
       if (!that.userExist(newUser)) {
-        console.log(newUser);
         firebase.database().ref('users/' + that.userLastIndex).set(newUser);
       }
     } else {

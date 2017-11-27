@@ -20,27 +20,29 @@ table.orders{
     width: 100%;
     overflow-x: scroll;
   }
-}
 
-.empty-box {
-  margin: 0 auto;
-  width: 80%;
-  padding: 70px 0;
-  text-align: center;
-  background-color: #e0e0e0;
-  text-align: center;
-  border: 1px solid #c3c3c3;
+  .orders-tools {
+    margin: 0;
 
-  span {
-    display: block;
-    color: gray;
-    font-weight: bold;
-    text-align: center;
-  }
+    .orders-info{
+      display: inline-block;
 
-  a{
-    color: #02bcd4;
-    text-decoration: underline;
-    cursor: pointer;
+      span {
+        margin-top: 6px;
+        display: block;
+      }
+    }
+    .export-send-tools {
+      float: right;
+      height: 32px;
+      vertical-align: top;
+
+
+      a , button {
+        font-size: 12px;
+        height: 33px;
+        vertical-align: top;
+      }
+    }
   }
 }

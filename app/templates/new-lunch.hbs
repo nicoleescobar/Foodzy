@@ -9,114 +9,123 @@
   <div class="container">
 
     <div class="page-title">
-      <img src="/assets/images/icons/multicolor/menu.svg" alt="">
       <h4> Nuevo Menu </h4>
     </div>
     <div class="divider"></div>
 
   <form class="row">
-    <div class="col s12 m4 form">
-      <div class="icon">
-        <h5> Proteinas </h5>
-      </div>
+    <div class="col s12 m4">
+      <div class="form">
+        <div class="icon">
+          <h5> Proteinas </h5>
+        </div>
 
-      <div class="input-field">
-        <div class="question">
-          {{#each menu.proteins as |protein|}}
+        <div class="input-field">
+          <div class="question">
+            {{#each menu.proteins as |protein|}}
+              <p>
+                {{input class="validate" type="text" placeholder="Proteina" id=protein.id value=protein.name}}
+              </p>
+            {{/each}}
+
+            <div class="add">
+              <button class="add-button" type="button" name="button" {{action 'addProtein' }}> <i class="material-icons">add_circle_outline</i> </button>
+              <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'proteins'}}> <i class="material-icons">remove_circle_outline</i> </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col s12 m4 ">
+      <div class="form">
+        <div class="icon">
+          <h5> Acompañamientos </h5>
+        </div>
+
+        <div class="input-field">
+          <div class="question">
+            {{#each menu.accomps as |accomp|}}
             <p>
-              {{input class="validate" type="text" placeholder="Proteina" id=protein.id value=protein.name}}
+              {{input class="validate" type="text" placeholder="Acompañamiento" id=accomp.id value=accomp.name}}
             </p>
-          {{/each}}
+            {{/each}}
 
-          <div class="add">
-            <button class="add-button" type="button" name="button" {{action 'addProtein' }}> <i class="material-icons">add_circle_outline</i> </button>
-            <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'proteins'}}> <i class="material-icons">remove_circle_outline</i> </button>
+            <div class="add">
+              <button class="add-button" type="button" name="button" {{action "addAccomp"}}> <i class="material-icons">add_circle_outline</i> </button>
+              <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'accomps'}}> <i class="material-icons">remove_circle_outline</i> </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="col s12 m4 form">
-      <div class="icon">
-        <h5> Acompañamientos </h5>
-      </div>
-
-      <div class="input-field">
-        <div class="question">
-          {{#each menu.accomps as |accomp|}}
-          <p>
-            {{input class="validate" type="text" placeholder="Acompañamiento" id=accomp.id value=accomp.name}}
-          </p>
-          {{/each}}
-
-          <div class="add">
-            <button class="add-button" type="button" name="button" {{action "addAccomp"}}> <i class="material-icons">add_circle_outline</i> </button>
-            <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'accomps'}}> <i class="material-icons">remove_circle_outline</i> </button>
-          </div>
+    <div class="col s12 m4">
+      <div class="form">
+        <div class="icon">
+          <h5> Adicionales </h5>
         </div>
-      </div>
-    </div>
 
-    <div class="col s12 m4 form">
-      <div class="icon">
-        <h5> Adicionales </h5>
-      </div>
+        <div class="input-field">
+          <div class="question">
+            {{#each menu.additions as |addition|}}
+            <p>
+              {{input class="validate" type="text" placeholder="Adicionales" id=addition.id value=addition.name}}
+            </p>
+            {{/each}}
 
-      <div class="input-field">
-        <div class="question">
-          {{#each menu.additions as |addition|}}
-          <p>
-            {{input class="validate" type="text" placeholder="Adicionales" id=addition.id value=addition.name}}
-          </p>
-          {{/each}}
-
-          <div class="add">
-            <button class="add-button" type="button" name="button" {{action "addAddition"}}> <i class="material-icons">add_circle_outline</i> </button>
-            <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'additions'}}> <i class="material-icons">remove_circle_outline</i> </button>
+            <div class="add">
+              <button class="add-button" type="button" name="button" {{action "addAddition"}}> <i class="material-icons">add_circle_outline</i> </button>
+              <button class="remove-button" type="button" name="button" {{action 'deleteLastItem' 'additions'}}> <i class="material-icons">remove_circle_outline</i> </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </form>
   <form class="row">
-    <div class="col s12 m4 form">
-      <div class="col s12 icon">
-        <h5> Sopa </h5>
-      </div>
-      <div class="switch-container">
-        <div class="switch">
-          <label>
-            No
-            <input id="soupCheck" type="checkbox" onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
-            <span class="lever"></span>
-            Si
-          </label>
+    <div class="col s12 m4 ">
+      <div class="form">
+        <div class="col s12 icon">
+          <h5> Sopa </h5>
         </div>
-      </div>
+        <div class="switch-container">
+          <div class="switch">
+            <label>
+              No
+              <input id="soupCheck" type="checkbox" onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
+              <span class="lever"></span>
+              Si
+            </label>
+          </div>
+        </div>
 
-      {{#if addSoup}}
-      <p class="descp-input"> {{input class="validate" type="text" placeholder="Sopa de ..." id="soupType" value=menu.soup}}</p>
-      {{/if}}
+        {{#if addSoup}}
+        <p class="descp-input"> {{input class="validate" type="text" placeholder="Sopa de ..." id="soupType" value=menu.soup}}</p>
+        {{/if}}
+      </div>
     </div>
 
-    <div class="col s12 m4 form">
-      <div class="col s12 icon">
-        <h5> Bebida </h5>
-      </div>
-      <div class="switch-container">
-        <div class="switch">
-          <label>
-            No
-            <input id="drinkCheck" type="checkbox" onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
-            <span class="lever"></span>
-            Si
-          </label>
+    <div class="col s12 m4 ">
+      <div class="form">
+        <div class="col s12 icon">
+          <h5> Bebida </h5>
         </div>
-      </div>
+        <div class="switch-container">
+          <div class="switch">
+            <label>
+              No
+              <input id="drinkCheck" type="checkbox" onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
+              <span class="lever"></span>
+              Si
+            </label>
+          </div>
+        </div>
 
-      {{#if addDrink}}
-      <p class="descp-input">{{input class="validate" type="text" placeholder="Bebida de ..." id="drinkType" value=menu.drink}}</p>
-      {{/if}}
+        {{#if addDrink}}
+        <p class="descp-input">{{input class="validate" type="text" placeholder="Bebida de ..." id="drinkType" value=menu.drink}}</p>
+        {{/if}}
+      </div>
     </div>
   </form>
 

@@ -5,27 +5,44 @@ export default Ember.Route.extend({
 
   model: function () {
     this.getUserList();
+    this.loadLastMenu();
   },
 
   actions: {
     saveMenu: function () {
       var controller = this.controllerFor("new-lunch");
       var date = new Date().toString();
+      var menuRef = new Date().getUTCDate() + "-" + (new Date().getUTCMonth()+ 1) + "-" + new Date().getUTCFullYear();
       Ember.set(controller.menu, "menuDate", date);
+      console.log(menuRef);
 
       if (this.validMenu(controller.menu)) {
         controller.set('showLoading', true);
         var database = firebase.database();
-        database.ref('menu').set({
-          menu : controller.menu
-        });
-        database.ref('orders').set({});
+        database.ref('menus/' + menuRef).set(controller.menu);
+        database.ref('orders/' + menuRef).set({});
+        
         this.showSaved();
-        this.notify();
+        // this.notify();
       } else {
         controller.showIncompleteMenu();
       }
     }
+  },
+
+  loadLastMenu: function(){
+    var controller = this.controllerFor("new-lunch");
+    var database = firebase.database();
+    var orders = database.ref('/menus');
+
+    orders.on('value', function(snapshot) {
+      var menus = snapshot.val();
+      var menusDates = [];
+      for (var item in menus) {
+        menusDates.push(item);
+      }
+      controller.set("menu", menus[menusDates[menusDates.length - 1]]);
+    });
   },
 
   validMenu: function (menu) {

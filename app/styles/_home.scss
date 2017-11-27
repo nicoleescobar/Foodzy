@@ -1,112 +1,55 @@
-.header {
-  .logo {
-    a {
-      display: inline-block;
-      width: 100px;
-      margin-top: 7px;
-
-      img {
-        width: 100%;
-      }
-    }
-  }
-
-  .toggler {
-    display: inline-block;
-    float: right;
-    cursor: pointer;
-    float: right;
-    color: white;
-    margin: 12px 20px 0;
-  }
-
-  .nav {
-    text-align: right;
-
-    ul.menu {
-          margin: 16px 20px 16px 0px;
-
-      li {
-        display: inline-block;
-        margin-left: 20px;
-        position: relative;
-        vertical-align: middle;
-
-        &:hover{
-          .tooltip-text {
-            visibility: visible;
-          }
-        }
-
-        .tooltip-text {
-          visibility: hidden;
-          position: absolute;
-          width: inherit;
-          bottom: -22px;
-          left: -3px;
-          background-color: #00bcd4;
-          display: inline-block;
-          color: white;
-          border: 1px solid white;
-          border-radius: 4px;
-          font-size: 12px;
-          padding: 2px 5px;
-        }
-
-        a {
-          display: inline-block;
-          color: white;
-          text-shadow: 2px 2px 3px #848282;
-
-          &:hover {
-            text-shadow: 2px 2px 3px #fff;
-          }
-        }
-      }
-    }
-  }
-}
-
 .other-food-content {
-  margin-top: 37px;
-  border: 1px solid #dcdada;
-  padding: 15px 20px 15px 10px;
-  border-radius: 7px;
+  margin: 20px 10px 0 10px;
 
+  h6  {
+    margin: 0;
+    font-size: 20px;
+  }
   .soup-container , .drink-container {
     margin-bottom: 10px;
     .switch, .icon {
       display: inline-block;
     }
     .icon  { margin-right: 10px;}
-    .switch {
-      float: right;
+  }
+}
+
+.orderHome, .noMenu, .noOrders{
+  text-align: center;
+  margin-top: 50px;
+
+  img {
+    width: 100px;
+    vertical-align: top;
+  }
+
+  h3 {
+    font-size: 20px;
+    margin: 0;
+  }
+  .description {
+    text-align: left;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 15px;
+    vertical-align: top;
+    color: #bbb;
+
+    span {
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    a {
+      color: #00bcd4;
     }
   }
 }
 
 .orderHome {
-  h3 {
-    font-size: 20px;
-    margin: 10px 0;
-  }
-  .description {
-    display: inline-block;
-    margin-bottom: 20px;
-    margin-left: 10px;
-    vertical-align: top;
 
-    span {
-      font-size: 16px;
-    }
-  }
-  .orderImage {
-    width: 67px;
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  a {
-    display: block;
+  img {
+    margin-right: 10px;
+    margin-top: 20px;
   }
 }

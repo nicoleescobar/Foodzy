@@ -5,51 +5,22 @@ html, body {
 html body {
   min-width: 400px;
   font-size: 14px;
-  font-family: 'Catamaran', cursive;
-  background-color: #f2f9ff;
-  background-image: url(/assets/images/bg.png);
-  background-blend-mode: overlay;
-}
-
-* {
-  -webkit-transform: translateZ(0);
+  font-family: 'Open Sans', sans-serif;
+  background-color: #eceff1;
 }
 
 .container {
-  padding: 20px;
-  margin-bottom: 20px !important;
-  background-color: #fff;
-  border-radius: 20px;
-  border: 1px solid #dcdada;
-  box-shadow: 1px 2px 3px #dcdbdb;
+  margin: 20px auto !important;
   overflow: hidden;
 }
 
-strong {
-  font-family: 'Catamaran', cursive;
-  font-weight: 300 !important;
-}
-
-.phrase-container {
-   text-align: right;
-   color: #26c6da;
-}
-
 .phrase {
-  font-family: 'Pacifico', cursive;
   font-size: 20px;
   line-height: 41px;
 }
 
-.card .card-action a.fill-link {
-  color: #fff !important;
-  display: block;
-  text-align: center;
-  margin-right: 0 !important;
-}
-
-.textshadow {
-  text-shadow: 3px 3px 4px #e8bcd3;
+.divider {
+  margin: 20px 0;
 }
 
 .page-title {
@@ -62,8 +33,10 @@ strong {
   }
 
   h5, h4 {
+    font-family: 'Permanent Marker', cursive;
     line-height: .9;
-    font-family: 'Pacifico', cursive;
+    color: #546e7a;
+    text-shadow: 0px 0px 1px #90a4ae;
   }
 
   img{
@@ -81,8 +54,8 @@ strong {
 
   h5 {
     line-height: .9;
-    font-size: 23px;
-    font-family: 'Catamaran', cursive;
+    font-size: 20px;
+    color: #607d8b;
   }
 
   img {
@@ -94,7 +67,13 @@ strong {
 
 form .form .descp-input input{
   width: 200px;
-  margin-left: 20px;
+  margin-left: 15px;
+}
+
+strong {
+  font-weight: 600 !important;
+  text-transform: none;
+  color: #546e7a;
 }
 
 .alert {
@@ -104,7 +83,7 @@ form .form .descp-input input{
   left: 0;
   right: 0;
   margin: 0 38%;
-  background-color: black;
+  background-color: #546e7a;
   color: white;
   text-align: center;
   border-radius: 20px;

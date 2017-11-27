@@ -39,11 +39,11 @@ export default Ember.Route.extend({
 
   getOrders: function () {
     var controller = this.controllerFor("notify");
-    var database = firebase.database();
-    var orders = database.ref('orders');
+    var todayRef =  new Date().getUTCDate() + "-" + (new Date().getUTCMonth()+ 1) + "-" + new Date().getUTCFullYear();
+    var orders = firebase.database().ref('/orders/'+todayRef);
     orders.on('value', function(snapshot) {
       var orders = Ember.isPresent(snapshot.val()) ? snapshot.val() : [] ;
-      Ember.set(controller, "orders", snapshot.val());
+      Ember.set(controller, "orders", orders);
       controller.setupOrders();
     });
   },

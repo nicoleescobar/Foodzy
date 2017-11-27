@@ -50,8 +50,33 @@ html body {
 
   input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
     height: 30px;
-    font-size: 16px;
     margin: 0 0 5px 0;
+  }
+
+  input {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+  }
+
+  [type="checkbox"]+label {
+    line-height: normal;
+    padding-left: 25px;
+  }
+
+  [type="checkbox"]+label:before, [type="checkbox"]:not(.filled-in)+label:after {
+    width: 15px;
+    height: 15px;
+    top: 2px;
+  }
+
+  [type="radio"]+label:before, [type="radio"]+label:after {
+    width: 15px;
+    height: 15px;
+  }
+
+  [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+    padding-left: 26px; 
   }
 
 }

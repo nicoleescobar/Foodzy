@@ -20,6 +20,8 @@ export default Ember.Controller.extend({
   showSelectFoodModal: false,
   orderedLunch: null,
   orderLastIndex: 0,
+  noMenuToday: false,
+
 
   actions: {
     closeModal: function () {
@@ -74,17 +76,21 @@ export default Ember.Controller.extend({
     if (Ember.isPresent(menu.drink)) {
       this.set("showDrink", true);
     }
+
+   this.set("menu", menu);
   },
 
   deliverOrder: function () {
     this.set("orderedLunch", this.order);
     this.set('hideMenu', true);
+    var todayRef =  new Date().getUTCDate() + "-" + (new Date().getUTCMonth()+ 1) + "-" + new Date().getUTCFullYear();
+
     var order = {
       user: this.user,
       order: this.order,
       date: new Date().toString(),
     };
-    firebase.database().ref('orders/' + this.orderLastIndex).set(order);
+    firebase.database().ref('orders/' + todayRef + '/' + this.orderLastIndex).set(order);
   },
 
   validateOrder: function () {
@@ -109,5 +115,7 @@ export default Ember.Controller.extend({
     this.set('ordersFilled', null);
     this.set('showLoading', true);
     this.set('showSelectFoodModal', false);
+    this.set("noMenuToday", false);
+    this.set('orderLastIndex', 0);
   }
 });
