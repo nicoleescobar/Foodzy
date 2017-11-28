@@ -10,6 +10,7 @@
 
 # misc
 /.sass-cache
+/public/assets/images/animations/NetLogo-6.0.2  
 /connect.lock
 /coverage/*
 /libpeerconnection.log
