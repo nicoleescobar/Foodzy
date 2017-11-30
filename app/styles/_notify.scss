@@ -1,4 +1,6 @@
 #notificationsTable {
+  min-width: 450px;
+  
   th {
     padding: 5px 10px;
 
@@ -9,6 +11,7 @@
 
   td {
     font-size: 16px;
+    padding: 5px 10px;
 
     button {
       border: 0;

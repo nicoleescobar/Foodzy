@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
   showDrink: false,
   showLoadingGreet: false,
   showAdminSettings: false,
-  hideMenu: true,
+  hideMenu: false,
   ordersFilled: null,
   showLoading: true,
   showSelectFoodModal: false,
@@ -83,10 +83,12 @@ export default Ember.Controller.extend({
   deliverOrder: function () {
     this.set("orderedLunch", this.order);
     this.set('hideMenu', true);
+    var user = JSON.parse(localStorage.getItem("user"));
+    this.set('user', user);
     var todayRef =  new Date().getUTCDate() + "-" + (new Date().getUTCMonth()+ 1) + "-" + new Date().getUTCFullYear();
 
     var order = {
-      user: this.user,
+      user: user,
       order: this.order,
       date: new Date().toString(),
     };
@@ -111,7 +113,7 @@ export default Ember.Controller.extend({
     this.set('showDrink', false);
     this.set('showLoadingGreet', false);
     this.set('showAdminSettings', false);
-    this.set('hideMenu', true);
+    this.set('hideMenu', false);
     this.set('ordersFilled', null);
     this.set('showLoading', true);
     this.set('showSelectFoodModal', false);

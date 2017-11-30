@@ -17,10 +17,12 @@
 .orderHome, .noMenu, .noOrders{
   text-align: center;
   margin-top: 50px;
+  width: 100%;
 
   img {
-    width: 100px;
+    width: 20%;
     vertical-align: top;
+    max-width: 125px;
   }
 
   h3 {
@@ -28,12 +30,14 @@
     margin: 0;
   }
   .description {
+    width: 75%;
     text-align: left;
     vertical-align: top;
     display: inline-block;
     margin-top: 15px;
     vertical-align: top;
     color: #bbb;
+    max-width: 650px;
 
     span {
       font-size: 16px;

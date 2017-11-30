@@ -13,13 +13,8 @@ table.orders{
 }
 
 .orders-container {
-  padding: 20px;
+  padding: 0 20px;
   text-transform: capitalize;
-
-  .table-wraper {
-    width: 100%;
-    overflow-x: scroll;
-  }
 
   .orders-tools {
     margin: 0;
@@ -29,20 +24,31 @@ table.orders{
 
       span {
         margin-top: 6px;
-        display: block;
+        margin-right: 10px;
       }
     }
-    .export-send-tools {
-      float: right;
-      height: 32px;
-      vertical-align: top;
+  }
+}
 
 
-      a , button {
-        font-size: 12px;
-        height: 33px;
-        vertical-align: top;
-      }
+.export-send-tools {
+  margin: 20px 0;
+
+  a {
+    font-size: 12px;
+    height: 33px;
+    vertical-align: top;
+    margin-right: 10px;
+    padding: 0 10px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    i {
+      font-size: 16px;
+      line-height: normal;
+      margin-right: 2px;
     }
   }
 }

@@ -19,21 +19,19 @@
   <div class="orders-tools form">
     <div class="orders-info">
       <span> <strong>Fecha:</strong> {{ordersDate}} </span>
-      <span> <strong>Numero de sopas:</strong> {{numberSoups}} </span>
-      <span> <strong>Numero de bebidas:</strong> {{numberDrinks}} </span>
-    </div>
-
-
-    <div class="export-send-tools">
-      <a class="waves-effect waves-light btn-flat"> Exportar Archivo </a>
-      <button class="btn waves-effect waves-light cyan"> Enviar Ordenes </button>
+      <span> <strong>#Sopas:</strong> {{numberSoups}} </span>
+      <span> <strong>#Bebidas:</strong> {{numberDrinks}} </span>
     </div>
   </div>
-</div>
 
-<div class="orders-container container">
+  <div class="export-send-tools">
+    <a class="waves-effect waves-light btn cyan" {{action "exportOrders"}}>  <i class="fa fa-file-excel-o" aria-hidden="true"></i> Exportar </a>
+    <a class="btn waves-effect waves-light cyan cyan lighten-1" {{action "downloadOrdersImg"}}> <i class="fa fa-download" aria-hidden="true"></i> Descargar Imagen </a>
+    <a href={{urlMessage}} target="_blank" class="btn waves-effect waves-light teal lighten-1"> <i class="fa fa-whatsapp" aria-hidden="true"></i> Enviar por WhatsApp </a>
+  </div>
+
   <div class="table-wraper">
-    <table class="bordered highlight orders">
+    <table class="bordered highlight striped orders grey lighten-5" id="ordersTable">
       <thead>
         <tr>
             <th> <strong>  Nombre          </strong>     </th>
@@ -62,5 +60,6 @@
     </table>
   </div>
 </div>
+
 
 {{/if}}

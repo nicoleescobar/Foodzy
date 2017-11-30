@@ -12,11 +12,6 @@ export default Ember.Route.extend({
     controller.cleanController();
   }.on('deactivate'),
 
-  setController: function () {
-    var controller = this.controllerFor("home");
-    controller.cleanController();
-  }.on('activate'),
-
   getMenu: function () {
     var controller = this.controllerFor("home");
     var todayRef =  new Date().getUTCDate() + "-" + (new Date().getUTCMonth()+ 1) + "-" + new Date().getUTCFullYear();
@@ -71,10 +66,12 @@ export default Ember.Route.extend({
   },
 
   checkUser: function () {
+    var controller = this.controllerFor("home");
     var that = this;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user.providerData[0]));
+        controller.set('user', user.providerData[0])
       } else {
         var provider = new firebase.auth.GoogleAuthProvider();
         provider.addScope('https://www.googleapis.com/auth/plus.login');

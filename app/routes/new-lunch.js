@@ -14,14 +14,12 @@ export default Ember.Route.extend({
       var date = new Date().toString();
       var menuRef = new Date().getUTCDate() + "-" + (new Date().getUTCMonth()+ 1) + "-" + new Date().getUTCFullYear();
       Ember.set(controller.menu, "menuDate", date);
-      console.log(menuRef);
-
       if (this.validMenu(controller.menu)) {
         controller.set('showLoading', true);
         var database = firebase.database();
         database.ref('menus/' + menuRef).set(controller.menu);
         database.ref('orders/' + menuRef).set({});
-        
+
         this.showSaved();
         // this.notify();
       } else {
@@ -41,7 +39,13 @@ export default Ember.Route.extend({
       for (var item in menus) {
         menusDates.push(item);
       }
-      controller.set("menu", menus[menusDates[menusDates.length - 1]]);
+      var menu = menus[menusDates[menusDates.length - 1]]
+      controller.set("addSoup",Ember.isPresent(menu.soup));
+      controller.set("addDrink", Ember.isPresent(menu.drink));
+      controller.set("menu", menu);
+
+      Ember.$("#drinkCheck").prop('checked', Ember.isPresent(menu.drink));
+      Ember.$("#soupCheck").prop('checked', Ember.isPresent(menu.soup));
     });
   },
 

@@ -66,8 +66,7 @@ html body {
 
 
 form .form .descp-input input{
-  width: 200px;
-  margin-left: 15px;
+  width: 100%;
 }
 
 strong {
@@ -88,4 +87,9 @@ strong {
   text-align: center;
   border-radius: 20px;
   box-shadow: 3px 3px 11px #3a3a3a;
+}
+
+.table-wraper {
+  width: 100%;
+  overflow-x: scroll;
 }

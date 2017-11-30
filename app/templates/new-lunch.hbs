@@ -86,14 +86,14 @@
   <form class="row">
     <div class="col s12 m4 ">
       <div class="form">
-        <div class="col s12 icon">
+        <div class="icon">
           <h5> Sopa </h5>
         </div>
         <div class="switch-container">
           <div class="switch">
             <label>
               No
-              <input id="soupCheck" type="checkbox" onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
+              <input id="soupCheck" type="checkbox" checked={{addSoup}} onchange={{action 'enableOption' 'addSoup' 'soupCheck'}}>
               <span class="lever"></span>
               Si
             </label>
@@ -108,14 +108,14 @@
 
     <div class="col s12 m4 ">
       <div class="form">
-        <div class="col s12 icon">
+        <div class="icon">
           <h5> Bebida </h5>
         </div>
         <div class="switch-container">
           <div class="switch">
             <label>
               No
-              <input id="drinkCheck" type="checkbox" onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
+              <input id="drinkCheck" type="checkbox" checked={{addDrink}} onchange={{action 'enableOption' 'addDrink' 'drinkCheck'}}>
               <span class="lever"></span>
               Si
             </label>

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page-title notifications">
-    <h4> Miembros </h4>
+    <h4> Notificar </h4>
   </div>
 
   <div class="toolbar">
@@ -8,35 +8,31 @@
      <span>Notificar a todos</span>
     </button>
   </div>
+  <div class="table-wraper">
+   <table class="bordered highlight striped highlight orders grey lighten-5" id="notificationsTable">
+     <thead>
+       <tr>
+         <th> <strong> Nombre </strong> </th>
+         <th> <strong> Email </strong> </th>
+         <th> <strong> Notificar </strong> </th>
+       </tr>
+     </thead>
+     <tbody>
+       {{#each userList as |user index|}}
+       <tr>
+         <td class="username"> <span> {{user.username}} </span>  </td>
+         <td> {{user.email}} </td>
 
- <table class="bordered highlight striped highlight orders" id="notificationsTable">
-   <thead>
-     <tr>
-       <th> Nº </th>
-       <th> Nombre </th>
-       <th> Email </th>
-       <th> Notificar </th>
-     </tr>
-   </thead>
-   <tbody>
-     {{#each userList as |user index|}}
-     <tr>
-       <td class="checks">
-         {{index}}
-       </td>
-
-       <td class="username"> <span> {{user.username}} </span>  </td>
-       <td> {{user.email}} </td>
-
-       <td>
-         {{#unless user.responded}}
-            <button class="notifications-btn   cyan" {{action "notifySingleUser" user}}>
-              Notificar
-            </button>
-         {{/unless}}
-       </td>
-     </tr>
-     {{/each}}
-   </tbody>
- </table>
+         <td>
+           {{#unless user.responded}}
+              <button class="notifications-btn cyan" {{action "notifySingleUser" user}}>
+                Notificar
+              </button>
+           {{/unless}}
+         </td>
+       </tr>
+       {{/each}}
+     </tbody>
+   </table>
+ </div>
 </div>

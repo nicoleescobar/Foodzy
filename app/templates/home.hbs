@@ -23,7 +23,7 @@
           <span> {{#each orderedLunch.accomps as |accomp|}} {{accomp}}, {{/each}} </span>
           <span> adicionaste {{orderedLunch.addition}}</span>
           {{#if orderedLunch.soup}} <span> con Sopas </span> {{/if}}
-          {{#if orderedLunch.drink}} <span> y {{menu.drink}} </span> {{/if}}
+          {{#if orderedLunch.drink}} <span> y {{menu.drink}}</span> {{/if}}
           <br>
           <span> Buen Provecho! </span>
         </div>
@@ -75,7 +75,9 @@
             </div>
           </div>
         </div>
-
+      </form>
+      
+      <form class="row order-form">
         <div class="col s12 m6">
           <div class="form">
             <div class="icon">
@@ -93,8 +95,8 @@
               </div>
             </div>
           </div>
-
         </div>
+
         {{#if (or showSoup showDrink)}}
           <div class="col s12 m6 ">
             <div class="other-food-content">
