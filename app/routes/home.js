@@ -67,7 +67,6 @@ export default Ember.Route.extend({
 
   checkUser: function () {
     var controller = this.controllerFor("home");
-    var that = this;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user.providerData[0]));
