@@ -20,6 +20,11 @@
 }
 
 @media all and (max-width: 620px) {
+  body {
+    table {
+      font-size: 10px !important;
+    }
+  }
   .export-send-tools {
     margin: 0;
     a {
@@ -70,19 +75,50 @@
 
 
 @media all and (max-width: 560px) {
-  body .orderHome, body .noMenu, body .noOrders {
-    img {
-      display: inline-block;
-      margin: 0 auto;
+  body {
+    .orderHome, .noMenu, .noOrders {
+      img {
+        display: inline-block;
+        margin: 0 auto;
+      }
+
+      .description {
+        display: block;
+        width: 100%;
+
+        h3 {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+}
+
+
+@media all and (max-width: 400px) {
+  body {
+    table * {
+      font-size: 10px;
     }
 
-    .description {
-      display: block;
-      width: 100%;
+    .export-send-tools a {
+      font-size: 10px;
+      display: inline-block;
+      width: 30%;
+      text-overflow: ellipsis;
+      vertical-align: top;
+      margin-right: 5px;
+      padding: 0;
+    }
 
-      h3 {
-        text-align: center;
-      }
+    .page-title h4, .page-title h5 {
+      font-size: 17px;
+      margin: 0;
+    }
+
+    .orders-container {
+      padding: 0 5px;
     }
   }
 }

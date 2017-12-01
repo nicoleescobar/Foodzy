@@ -52,6 +52,7 @@ export default Ember.Component.extend({
         that.set("userLastIndex", users.length);
       } else {
         that.set('users', []);
+        that.checkUser();
       }
     });
   },
@@ -78,7 +79,8 @@ export default Ember.Component.extend({
   saveUser: function (user) {
     var that = this;
     if (this.users) {
-      var newUser = {username: user.displayName, email: user.email, uid: user.uid , userToken: that.user.userToken};
+      var alias = this.generateAlias(user.displayName);
+      var newUser = {alias: alias, username: user.displayName, email: user.email, uid: user.uid , userToken: that.user.userToken};
       if (!that.userExist(newUser)) {
         firebase.database().ref('users/' + that.userLastIndex).set(newUser);
       }
@@ -134,6 +136,11 @@ export default Ember.Component.extend({
     }
     return false;
   },
+
+  generateAlias: function (name) {
+    var splitedName = name.split(" ");
+    return `${splitedName[0]} ${splitedName[1].charAt(0)}`
+  }
 
 
 });

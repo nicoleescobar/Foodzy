@@ -21,7 +21,7 @@ export default Ember.Route.extend({
         database.ref('orders/' + menuRef).set({});
 
         this.showSaved();
-        // this.notify();
+        this.notify();
       } else {
         controller.showIncompleteMenu();
       }

@@ -13,7 +13,6 @@ export default Ember.Route.extend({
   loadOrders: function () {
     var controller = this.controllerFor("orders");
     var database = firebase.database();
-
     var todayRef =  new Date().getUTCDate() + "-" + (new Date().getUTCMonth()+ 1) + "-" + new Date().getUTCFullYear();
     controller.set('ordersDate', todayRef);
     var orders = database.ref('/orders/'+todayRef);
