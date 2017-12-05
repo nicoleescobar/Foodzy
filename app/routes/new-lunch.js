@@ -94,7 +94,6 @@ export default Ember.Route.extend({
 
   notify: function () {
     var controller = this.controllerFor("new-lunch");
-    console.log(controller.userList);
     for (var i = 0; i < controller.userList.length; i++) {
       var user = controller.userList[i];
       if (!user.responded) {

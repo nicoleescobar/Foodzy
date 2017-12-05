@@ -8,6 +8,8 @@ export default Ember.Component.extend({
   userLastIndex: 0,
   isOpen: true,
   showMenuToggler: false,
+  router: Ember.inject.service("-routing"),
+
 
   didReceiveAttrs: function () {
     var that = this;
@@ -21,6 +23,19 @@ export default Ember.Component.extend({
         that.set("isOpen", Ember.$( window ).width() > 600);
         that.set("showMenuToggler", Ember.$( window ).width() <= 600);
     });
+
+    let r = this.get("router");
+    r.addObserver("currentRouteName", this, "currentRouteNameChanged");
+    this.currentRouteNameChanged(r.get("currentRouteName"));
+
+  },
+
+  currentRouteNameChanged: function(router) {
+    var router = this.get("router");
+    var route = router.get("currentRouteName");
+    if (route !== "home" && !this.isAdminUser) {
+      window.location = "http://" + window.location.host + "/";
+    }
   },
 
   actions: {
@@ -140,7 +155,7 @@ export default Ember.Component.extend({
   generateAlias: function (name) {
     var splitedName = name.split(" ");
     return `${splitedName[0]} ${splitedName[1].charAt(0)}`
-  }
+  },
 
 
 });
