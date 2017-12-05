@@ -31,8 +31,8 @@ export default Ember.Component.extend({
   },
 
   currentRouteNameChanged: function(router) {
-    var router = this.get("router");
-    var route = router.get("currentRouteName");
+    var r = this.get("router");
+    var route = r.get("currentRouteName");
     if (route !== "home" && !this.isAdminUser) {
       window.location = "http://" + window.location.host + "/";
     }
