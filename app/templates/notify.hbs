@@ -21,12 +21,12 @@
        {{#each userList as |user index|}}
        <tr>
          <td class="username"> <span> {{user.username}} </span>  </td>
-         <td> {{user.email}} </td>
+         <td> <span> {{user.email}} </span> </td>
 
          <td>
            {{#unless user.responded}}
               <button class="notifications-btn cyan" {{action "notifySingleUser" user}}>
-                Notificar
+              <span>   Notificar </span> 
               </button>
            {{/unless}}
          </td>
